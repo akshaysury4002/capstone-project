@@ -1,0 +1,15 @@
+### Create New Account
+
+POST http://localhost:8080/booking/ HTTP/1.1 
+content-type: application/json
+
+{
+"bookingId" : 1, "bookingVname" : "benz", "bookingFrom" : "satara", "bookingDestination" : "munbai","date": "2020-01-01"
+}
+
+
+### Get All user 
+GET http://localhost:8080/booking/
+
+### Delete user By Id 
+DELETE http://localhost:8080/booking/1
