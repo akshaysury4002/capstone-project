@@ -2,6 +2,8 @@ package com.as.project.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 import com.as.project.dto.AppResponse;
+import com.as.project.dto.LoginDto;
 import com.as.project.dto.UserDto;
 import com.as.project.service.UserService;
 
@@ -33,7 +36,7 @@ public class UserController {
 
     @CrossOrigin
     @PostMapping(value = "/", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<AppResponse<Integer>> createNewUser(@RequestBody UserDto dto)
+    public ResponseEntity<AppResponse<Integer>> createNewUser(@Valid @RequestBody UserDto dto)
     {
        final Integer sts= service.createNewUser(dto);
 
@@ -45,6 +48,18 @@ public class UserController {
 
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
 
+    }
+
+    @PostMapping(value = "/login", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<AppResponse<String>> loginUser(@Valid @RequestBody LoginDto dto) {
+         String sts = service.loginUser(dto);
+        
+        final AppResponse<String> response = AppResponse.<String>builder()
+                                                    .sts("success")
+                                                    .msg("login Successfully")
+                                                    .bd(sts)
+                                                    .build();
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
     @CrossOrigin
@@ -101,6 +116,20 @@ public class UserController {
                                                         .bd(dto)
                                                         .build();
         return ResponseEntity.ok().body(response);
+    }
+
+    @CrossOrigin
+    @PostMapping(value = "/loginn", produces = MediaType.APPLICATION_JSON_VALUE,consumes = MediaType.APPLICATION_JSON_VALUE )
+    public ResponseEntity<AppResponse<UserDto>> login(@Valid @RequestBody LoginDto dto) {
+        final UserDto resDto = service.login(dto);
+
+        AppResponse<UserDto> res = AppResponse.<UserDto>builder()
+                                                .sts("success")
+                                                .msg("Login Success")
+                                                .bd(resDto)
+                                                .build();
+
+        return ResponseEntity.ok().body(res);
     }
 
     

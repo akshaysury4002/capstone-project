@@ -4,13 +4,16 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.as.project.domain.User;
+import com.as.project.dto.LoginDto;
 import com.as.project.dto.UserDto;
 import com.as.project.exception.UserNotFoundException;
 import com.as.project.repository.UserRepository;
+import com.as.project.util.DynamicMapper;
 import com.as.project.util.UserMapper;
 
 import lombok.AllArgsConstructor;
@@ -22,6 +25,7 @@ public class UserServiceImpl implements UserService {
 
     private final UserRepository repository;
     private final UserMapper mapper;
+    private final DynamicMapper dynamicMapper;
     
 
     @Override
@@ -57,6 +61,31 @@ public class UserServiceImpl implements UserService {
     public UserDto fetchUserDetails(Long id) throws UserNotFoundException {
         Optional<User> op = repository.findById(id);
         return mapper.toDto(op.orElseThrow(() -> new UserNotFoundException("Invoice " + id + " Not Found")));
+    }
+
+    @Override
+    public String loginUser(LoginDto dto) {
+    User user=dynamicMapper.toDomain(dto);
+    List<User> users = repository.findAll();
+    for(User users2:users){
+      if(user.getEmail().equals(users2.getEmail())&&user.getPassword().equals(users2.getPassword())){
+       
+            return users2.getRole();
+         }
+      }
+    return "invalid user";
+    
+    }
+
+    @Override
+    public UserDto login(LoginDto dto) throws UserNotFoundException {
+        Optional<User> op = repository.findByEmailAndPassword(dto.getEmail(), dto.getPassword());
+        User user = op.orElseThrow(() -> new UserNotFoundException("User Not Found"));
+          
+        UserDto userDto = new UserDto();
+        BeanUtils.copyProperties(user, userDto);
+
+        return userDto;
     }
     
 }

@@ -48,19 +48,24 @@
       </div>
       
       <div class="container d-flex justify-content-center" style="padding-left: 600px;">
-        <form  id="formCreateUser" style=" width: 450px; margin-top: -380px;
-          height: 550px;
+        <form  id="formCreateUser" style=" width: 480px; margin-top: -430px;
+          height: 630px;
           background: linear-gradient();
           left: 850px;
           border: 3px solid black;
           border-radius: 10px;">
 
-         <div class="formInner" style="margin-top: 30px; padding-left: 10px; width: 430px;padding-bottom: 20px;">
+         <div class="formInner" style="margin-top: 30px; padding-left: 10px; width: 460px;padding-bottom: 20px;">
 
             <div class="mb-5">
                 <label for="validationDefault01" class="form-label">Name</label>
                 <input type="text" class="form-control" id="txtName" placeholder="Enter your Name"  name="uname" required>
-              </div>
+            </div>
+
+            <div class="mb-5">
+              <label for="validationDefault01" class="form-label">Role</label>
+              <input type="text" class="form-control" id="txtRole" placeholder="Enter your Role"  name="role" required>
+            </div>
           
               <div class="mb-5">
                 <label for="validationDefault01" class="form-label" >Email</label>
@@ -96,6 +101,7 @@
   </section>
 
 
+  <!-- -----------Model---------- -->
   <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">

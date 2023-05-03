@@ -5,7 +5,7 @@ function createNewBooking(booking, form)
     }
 
 
-    axios.post('http://localhost:8080/booking/', booking, { headers })
+    axios.post('http://localhost:8080/booking/createNewBookings', booking, { headers })
          .then(res => {
 
             form.reset()

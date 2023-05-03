@@ -11,12 +11,12 @@ public class UserMapper {
     
    public User toDomain(UserDto dto)
     {
-        return new User(dto.getId(),dto.getUname(),dto.getEmail(),dto.getPassword());
+        return new User(dto.getId(),dto.getUname(),dto.getEmail(),dto.getPassword(),dto.getRole());
         
     }
 
    public UserDto toDto(User domain)
     {
-        return new UserDto(domain.getId(),domain.getUname(),domain.getEmail(),domain.getPassword());
+        return new UserDto(domain.getId(),domain.getUname(),domain.getEmail(),domain.getPassword(),domain.getRole());
     }
 }

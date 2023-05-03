@@ -1,15 +1,15 @@
 ### Create New Account
 
-POST http://localhost:8080/booking/ HTTP/1.1 
+POST http://localhost:8080/booking/createNewBookings HTTP/1.1 
 content-type: application/json
 
 {
-"bookingId" : 1, "bookingVname" : "benz", "bookingFrom" : "satara", "bookingDestination" : "munbai","date": "2020-01-01"
+"bookingId" : 6, "bookingVname" : "van", "bookingFrom" : "patan", "bookingDestination" : "rar","date": "2020-01-01"
 }
 
 
 ### Get All user 
-GET http://localhost:8080/booking/
+GET http://localhost:8080/booking/list
 
 ### Delete user By Id 
-DELETE http://localhost:8080/booking/1
+DELETE http://localhost:8080/booking/delete/24

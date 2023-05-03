@@ -6,7 +6,7 @@ POST http://localhost:8080/user/ HTTP/1.1
 content-type: application/json
 
 {
-"id" : 465, "uname" : "akshay", "email" : "dgdhdfg@gmail", "password" : "Pass@123"
+"id" : 4645, "uname" : "", "email" : "email@123", "password" : "emaail@123","role":"user"
 }
 
 
@@ -22,5 +22,13 @@ POST http://localhost:8080/user/login HTTP/1.1
 content-type: application/json
 
 {
-"email" : "zwr", "password" : "abcd"
+"email" : "", "password" : "llls@123"
+}
+
+### login 
+POST http://localhost:8080/user/loginn HTTP/1.1 
+content-type: application/json
+
+{
+"email" : "g@gmail", "password" : "llls@123"
 }

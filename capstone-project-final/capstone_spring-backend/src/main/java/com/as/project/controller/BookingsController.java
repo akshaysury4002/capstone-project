@@ -30,7 +30,7 @@ public class BookingsController {
     private final BookingsService service;
 
     @CrossOrigin
-    @PostMapping(value = "/", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/createNewBookings", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<AppResponse<Integer>> createNewBookings(@RequestBody BookingsDto dto)
     {
        final Integer sts= service.createNewBooking(dto);
@@ -46,7 +46,7 @@ public class BookingsController {
     }
 
     @CrossOrigin
-    @GetMapping(value = "/", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/list", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<AppResponse<List<BookingsDto>>> allBooking() {
         List<BookingsDto> users = service.all();
 
@@ -59,7 +59,7 @@ public class BookingsController {
         return ResponseEntity.ok().body(response);
     }
 
-    @DeleteMapping(value = "/{bookingId}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @DeleteMapping(value = "/delete/{bookingId}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<AppResponse<Integer>> deleteBooking(@PathVariable Long bookingId) {
 
         final Integer sts = service.deleteBooking(bookingId);
@@ -73,7 +73,7 @@ public class BookingsController {
         return ResponseEntity.status(200).body(response);
     }
 
-    @PutMapping(value = "/", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PutMapping(value = "/updateBooking", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<AppResponse<Integer>> updateBooking(@RequestBody BookingsDto dto) {
 
         final Integer sts = service.updateBooking(dto);
