@@ -22,6 +22,7 @@ public class UserServiceImpl implements UserService {
 
     private final UserRepository repository;
     private final UserMapper mapper;
+    
 
     @Override
     public Integer createNewUser(UserDto dto) {

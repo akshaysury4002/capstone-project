@@ -15,3 +15,12 @@ GET http://localhost:8080/user/
 
 ### Delete user By Id 
 DELETE http://localhost:8080/user/1
+
+
+### login 
+POST http://localhost:8080/user/login HTTP/1.1 
+content-type: application/json
+
+{
+"email" : "zwr", "password" : "abcd"
+}

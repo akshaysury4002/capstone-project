@@ -62,7 +62,7 @@ public class UserController {
     }
 
     @DeleteMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<AppResponse<Integer>> deleteInvoice(@PathVariable Long id) {
+    public ResponseEntity<AppResponse<Integer>> deleteUser(@PathVariable Long id) {
 
         final Integer sts = service.deleteUser(id);
 
@@ -76,7 +76,7 @@ public class UserController {
     }
 
     @PutMapping(value = "/", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<AppResponse<Integer>> updateNewInvoice(@RequestBody UserDto dto) {
+    public ResponseEntity<AppResponse<Integer>> updateUser(@RequestBody UserDto dto) {
 
         final Integer sts = service.updateUser(dto);
 

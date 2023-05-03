@@ -17,7 +17,5 @@ public interface UserService {
     Integer updateUser(UserDto user);
 
     UserDto fetchUserDetails(Long id) throws UserNotFoundException;
-
-
     
 }
