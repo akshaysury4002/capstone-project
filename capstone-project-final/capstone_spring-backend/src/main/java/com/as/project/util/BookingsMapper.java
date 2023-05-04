@@ -17,6 +17,6 @@ public class BookingsMapper {
 
    public BookingsDto toDto(Bookings domain)
     {
-        return new BookingsDto(domain.getBookingId(),domain.getBookingDestination(),domain.getBookingFrom(),domain.getBookingVname(),domain.getDate(),domain.getTime(),domain.getTypeVahi(),domain.getTtimeTAke(),domain.getPrice());
+        return new BookingsDto(domain.getBookingId(),domain.getBookingVname(),domain.getDate(),domain.getBookingFrom(),domain.getBookingDestination(),domain.getTime(),domain.getTypeVahi(),domain.getTtimeTAke(),domain.getPrice());
     }
 }

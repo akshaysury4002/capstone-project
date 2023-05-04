@@ -4,7 +4,7 @@ POST http://localhost:8080/booking/createNewBookings HTTP/1.1
 content-type: application/json
 
 {
-"bookingId" : 7, "bookingVname" : "van", "bookingFrom" : "patan", "bookingDestination" : "rar","date": 2020-01-01
+"bookingId" : 7, "bookingVname" : "ppppp", "bookingFrom" : "patan", "bookingDestination" : "rar","date": "2020-01-01", "typeVahi":"ac", "ttimeTAke": 7 ,"price" : 9000 ,"time":"07:15:39"
 }
 
 
@@ -12,7 +12,7 @@ content-type: application/json
 GET http://localhost:8080/booking/list
 
 ### Delete user By Id 
-DELETE http://localhost:8080/booking/delete/1
+DELETE http://localhost:8080/booking/delete/3
 
 ### Get All user 
 GET http://localhost:8080/booking/getbookingbyid/2

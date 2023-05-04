@@ -13,6 +13,8 @@ function propulateActualData(table, bookings) {
         const { bookingId, bookingVname, bookingFrom, bookingDestination,date } = booking
 
         const updatePageUrl = `./update-booking-slot.html?bookingId=${bookingId}`
+        const viewPageUrl = `./view-more-booking.html?bookingId=${bookingId}`
+
 
         const row = table.insertRow()
         row.insertCell(0).innerHTML = bookingId
@@ -21,10 +23,9 @@ function propulateActualData(table, bookings) {
         row.insertCell(3).innerHTML = bookingDestination
         row.insertCell(4).innerHTML = date
         row.insertCell(5).innerHTML = `
-        <a href='#'>View</a> 
+        <a href='${viewPageUrl}'>View</a> 
         <a class='ms-2' href='${updatePageUrl}'>Update</a> 
-        <a class='ms-2' href='#' onclick='showConfirmDeleteModal(${bookingId})'>Delete</a>   
-        `
+        <a class='ms-2' href='#' onclick='showConfirmDeleteModal(${bookingId})'>Delete</a>`
     }
 }
 

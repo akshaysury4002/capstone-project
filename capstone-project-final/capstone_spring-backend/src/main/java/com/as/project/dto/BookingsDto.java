@@ -21,12 +21,21 @@ import lombok.ToString;
 public class BookingsDto {
 
 
+    public BookingsDto(long bookingId2, String bookingVname2, String bookingDestination2, LocalDate date2,
+            String bookingFrom2, LocalTime time2, String typeVahi2, long ttimeTAke2, Double price2) {
+    }
+
     private long bookingId;
    
     @NotEmpty(message = "time cant be empty")
     @NotNull(message = "time cant be null")
     @NotBlank(message = "time cant be blank")
     private String bookingVname;
+
+    @NotEmpty(message = "time cant be empty")
+    @NotNull(message = "time cant be null")
+    @NotBlank(message = "time cant be blank")
+    private LocalDate date;
     
     @NotEmpty(message = "time cant be empty")
     @NotNull(message = "time cant be null")
@@ -37,11 +46,6 @@ public class BookingsDto {
     @NotNull(message = "time cant be null")
     @NotBlank(message = "time cant be blank")
     private String bookingDestination;
-
-    @NotEmpty(message = "time cant be empty")
-    @NotNull(message = "time cant be null")
-    @NotBlank(message = "time cant be blank")
-    private LocalDate date;
 
     @NotEmpty(message = "time cant be empty")
     @NotNull(message = "time cant be null")

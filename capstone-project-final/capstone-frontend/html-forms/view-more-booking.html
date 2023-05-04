@@ -45,7 +45,7 @@
                 <h2 class="p-2 ">Bookings</h2>
               </div>
               <div class="col" style="text-align: end; margin-top: 8px;">
-                <button type="button" class="btn btn-success" onclick="window.location='./create-booking-slot.html';" style="height: 50px;" data-bs-dismiss="modal">Create Booking Slot</a></button>
+                <button type="button" class="btn btn-success" onclick="window.location='./Admin-home.html';" style="height: 50px; width: 150px;" data-bs-dismiss="modal">Back</a></button>
               </div>
             </div>
 
@@ -59,10 +59,14 @@
                     <th scope="col">Booking From</th>
                     <th scope="col">Destination</th>
                     <th scope="col">Date</th>
-                    <th scope="col">Action</th>
+                    <th scope="col">time</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Total Time for Journey</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Action</th> 
                   </tr>
                 </thead>
-                <tbody id="tableBooking">
+                <tbody id="tableViewMoreBooking">
 
                 </tbody>
               </table>
@@ -92,6 +96,7 @@
 
 </div>
 
-    <script src="./restapi/list-bookings.js"></script>
+<script src="./restapi/view-more-booking.js"></script>
+
 </body>
 </html>

@@ -45,10 +45,10 @@
           border: 3px solid black;
           border-radius: 10px;">
 
-         <div class="formInner" style="margin-top: 30px; width:980px; padding-left: 20px; padding-bottom: 20px; font-size: 20px;
+         <div class="formInner" style="margin-top: 20px; width:980px; padding-left: 20px; padding-bottom: 20px; font-size: 20px;
          letter-spacing: 1px;">
 
-            <div class="row mb-5" style="margin-top: 100px;">
+            <div class="row mb-5" style="margin-top: 10px;">
 
                 <div class="col">
                     <label for="validationDefault01" class="form-label">Name of vehicle</label>
@@ -75,6 +75,39 @@
                 </div>
 
             </div>  
+
+
+            <div class="row mb-5">
+
+              <div class="col">
+                  <label for="validationDefault01" class="form-label">Time</label>
+                  <input type="time" class="form-control" id="txtTime" placeholder="Enter time"  name="time" required>
+              </div>
+  
+              <div class="col">
+                <label for="validationDefault01" class="form-label">Vahicle Type</label>
+                <select class="form-select" aria-label="Default select example" name="typeVahi" required>
+                    <option selected>Vahicle Type</option>
+                    <option value="ac">AC</option>
+                    <option value="non ac">NON AC</option>
+                </select>
+            </div>
+
+          </div>  
+
+          <div class="row mb-5">
+
+              <div class="col">
+                  <label for="validationDefault01" class="form-label">Total time for journey</label>
+                  <input type="number" class="form-control" id="txtttimeTAke" placeholder="time for journey"  name="ttimeTAke" required>
+              </div>
+  
+              <div class="col">
+                  <label for="validationDefault01" class="form-label">Price</label>
+                  <input type="number" class="form-control" id="txtprice" placeholder="Enter price"  name="price" required>
+              </div>
+
+          </div>  
             
          </div>
 

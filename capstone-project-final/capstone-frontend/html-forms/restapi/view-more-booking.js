@@ -7,35 +7,70 @@ const readIdQueryParam = () => {
 
 console.log(readIdQueryParam())
 
-function apiGetBookingDetails() {
+function apiGetBookingDetails(table) {
     const bookingId = readIdQueryParam()
 
     axios.get(`http://localhost:8080/booking/getbookingbyid/${bookingId}`)
-        .then(httpReponse => httpReponse.data)
-        .then(data => populateForm(document.getElementById('formUpdateBooking'), data.bd))
+            .then(res => {
+                   const { data } = res
+                   console.log(data)  
+                   const { sts, msg, bd } = data
+
+                 propulateActualData(table, bd)
+            })
         .catch(err => console.log(err))
 
         
 }
 
-function propulateActualData(table, bookings) {
+function setupTable() {
+    const table = document.getElementById('tableViewMoreBooking')
 
-    for(const booking of bookings) {
+     apiGetBookingDetails(table)
+}
 
-        const { bookingId, bookingVname, bookingFrom, bookingDestination,date } = booking
+function propulateActualData(table, bd) {
 
-        const updatePageUrl = `./update-booking-slot.html?bookingId=${bookingId}`
+    const updatePageUrl = `./update-booking-slot.html?bookingId=${bd.bookingId}`
 
         const row = table.insertRow()
-        row.insertCell(0).innerHTML = bookingId
-        row.insertCell(1).innerHTML = bookingVname
-        row.insertCell(2).innerHTML = bookingFrom
-        row.insertCell(3).innerHTML = bookingDestination
-        row.insertCell(4).innerHTML = date
-        row.insertCell(5).innerHTML = `
-        <a href='#'>View</a> 
-        <a class='ms-2' href='${updatePageUrl}'>Update</a> 
-        <a class='ms-2' href='#' onclick='showConfirmDeleteModal(${bookingId})'>Delete</a>   
-        `
+        row.insertCell(0).innerHTML = bd.bookingId
+        row.insertCell(1).innerHTML = bd.bookingVname
+        row.insertCell(2).innerHTML = bd.bookingFrom
+        row.insertCell(3).innerHTML = bd.bookingDestination
+        row.insertCell(4).innerHTML = bd.date
+        row.insertCell(5).innerHTML = bd.time
+        row.insertCell(6).innerHTML = bd.typeVahi
+        row.insertCell(7).innerHTML = bd.ttimeTAke
+        row.insertCell(8).innerHTML = bd.price
+        row.insertCell(9).innerHTML = ` <a href='${updatePageUrl}'>Update</a>
+        <a class='ms-2' href='#' onclick='showConfirmDeleteModal(${bd.bookingId})'>Delete</a> ` 
+    }
+
+setupTable()
+
+function showConfirmDeleteModal(bookingId) {
+    console.log('clicked ' + bookingId)
+    const myModalEl = document.getElementById('deleteModal');
+    const modal = new bootstrap.Modal(myModalEl)
+    modal.show()
+
+    const btDl = document.getElementById('btDl')
+    btDl.onclick = () => {
+        apiCallDeleteBooking(bookingId, modal)
+        window.location.href = '../html-forms/Admin-home.html'
+        
     }
 }
+
+
+function apiCallDeleteBooking(bookingId, modal) {
+    const url = `http://localhost:8080/booking/delete/${bookingId}`
+
+    axios.delete(url)
+        .then(res => res.data) // you converted complete response in to our business reponse
+        // .then( data => console.log(data.msg) ) // this line can be written in destructured form as below
+        .then( ({ sts, msg, bd }) =>  modal.hide())
+        .catch(console.log)
+}
+

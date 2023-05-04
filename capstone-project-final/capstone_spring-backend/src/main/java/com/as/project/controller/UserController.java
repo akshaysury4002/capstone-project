@@ -90,7 +90,7 @@ public class UserController {
         return ResponseEntity.status(200).body(response);
     }
 
-    @PutMapping(value = "/", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PutMapping(value = "/updateUser", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<AppResponse<Integer>> updateUser(@RequestBody UserDto dto) {
 
         final Integer sts = service.updateUser(dto);
