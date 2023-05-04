@@ -14,4 +14,6 @@ public interface BookingsService {
     Integer deleteBooking(Long bookingId) throws UserNotFoundException;
 
     Integer updateBooking(BookingsDto dto);
+
+    BookingsDto fetchBookingDetails(Long id) throws UserNotFoundException;
 }

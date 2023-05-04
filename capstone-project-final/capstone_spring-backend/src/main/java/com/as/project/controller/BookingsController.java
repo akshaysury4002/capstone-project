@@ -87,4 +87,17 @@ public class BookingsController {
         return ResponseEntity.ok().body(response);
     }
 
+    @GetMapping(value = "/getbookingbyid/{bookingId}", produces = MediaType.APPLICATION_JSON_VALUE )
+    public ResponseEntity<AppResponse<BookingsDto>> getBookingById(@PathVariable Long bookingId) {
+
+        final BookingsDto dto = service.fetchBookingDetails(bookingId);
+
+        final AppResponse<BookingsDto> response = AppResponse.<BookingsDto>builder()
+                                                        .sts("success")
+                                                        .msg("User Details")
+                                                        .bd(dto)
+                                                        .build();
+        return ResponseEntity.ok().body(response);
+    }
+
 }

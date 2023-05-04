@@ -83,7 +83,7 @@ public class UserController {
 
         final AppResponse<Integer> response = AppResponse.<Integer>builder()
             .sts("success")
-            .msg("Invoice Deleted Successfully")
+            .msg("User Deleted Successfully")
             .bd(sts)
             .build();
 
@@ -97,7 +97,7 @@ public class UserController {
 
         final AppResponse<Integer> response = AppResponse.<Integer>builder()
                                                     .sts("success")
-                                                    .msg("Invoice Updated Successfully")
+                                                    .msg("User Updated Successfully")
                                                     .bd(sts)
                                                     .build();
 
@@ -112,7 +112,7 @@ public class UserController {
 
         final AppResponse<UserDto> response = AppResponse.<UserDto>builder()
                                                         .sts("success")
-                                                        .msg("Invoice Details")
+                                                        .msg("User Details")
                                                         .bd(dto)
                                                         .build();
         return ResponseEntity.ok().body(response);

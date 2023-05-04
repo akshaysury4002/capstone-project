@@ -12,6 +12,8 @@ function propulateActualData(table, bookings) {
 
         const { bookingId, bookingVname, bookingFrom, bookingDestination,date } = booking
 
+        const updatePageUrl = `./update-booking-slot.html?bookingId=${bookingId}`
+
         const row = table.insertRow()
         row.insertCell(0).innerHTML = bookingId
         row.insertCell(1).innerHTML = bookingVname
@@ -20,7 +22,7 @@ function propulateActualData(table, bookings) {
         row.insertCell(4).innerHTML = date
         row.insertCell(5).innerHTML = `
         <a href='#'>View</a> 
-        <a class='ms-2' href='#'>Update</a> 
+        <a class='ms-2' href='${updatePageUrl}'>Update</a> 
         <a class='ms-2' href='#' onclick='showConfirmDeleteModal(${bookingId})'>Delete</a>   
         `
     }
@@ -35,6 +37,8 @@ function showConfirmDeleteModal(bookingId) {
     const btDl = document.getElementById('btDl')
     btDl.onclick = () => {
         apiCallDeleteBooking(bookingId, modal)
+        window.location.reload()
+        
     }
 }
 

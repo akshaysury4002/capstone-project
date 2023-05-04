@@ -1,12 +1,15 @@
 package com.as.project.service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.as.project.domain.Bookings;
 import com.as.project.dto.BookingsDto;
+import com.as.project.exception.BookingNotFoundException;
 import com.as.project.repository.BookingsRepository;
 import com.as.project.util.BookingsMapper;
 
@@ -44,6 +47,12 @@ public class BookingServiceImpl implements BookingsService {
     public Integer updateBooking(BookingsDto bookings) {
         repository.save(mapper.toDomain(bookings));
        return 1;
+    }
+
+    @Override
+    public BookingsDto fetchBookingDetails(Long bookingId) throws BookingNotFoundException {
+        Optional<Bookings> op = repository.findById(bookingId);
+        return mapper.toDto(op.orElseThrow(() -> new BookingNotFoundException("Booking " + bookingId + " Not Found")));
     }
 
    

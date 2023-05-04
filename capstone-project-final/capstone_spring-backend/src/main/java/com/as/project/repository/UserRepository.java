@@ -9,7 +9,10 @@ import com.as.project.domain.User;
 
 
 
+
+
 public interface UserRepository extends JpaRepository<User, Long> {
    
     Optional<User> findByEmailAndPassword(String email, String password);
+
 }
