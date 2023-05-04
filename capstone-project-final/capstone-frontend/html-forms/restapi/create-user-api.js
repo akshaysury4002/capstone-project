@@ -1,4 +1,15 @@
 
+
+const validateForm = ({ uname, email, password }) => {
+
+    if (uname.length <= 2) return { msg: 'invalid Name', sts: false}
+    if (email.length <= 3) return { msg: 'invalid email', sts: false}
+    if (!email.includes(".com")) return { msg: 'invalid email', sts: false}
+    if (password.length < 8) return { msg: 'invalid password', sts: false }
+
+    return { sts : 'success', msg :'all fields are valid' }
+}
+
 function createNewUser(user, form)
 {
     const headers = {
@@ -18,6 +29,9 @@ function createNewUser(user, form)
 
 function setupForm()
 {
+    const err = document.getElementById('errMsg')
+    err.style.display = 'none'
+
     const formCreateUser= document.getElementById('formCreateUser')
 
     formCreateUser.onsubmit = ev => {
@@ -44,8 +58,15 @@ function setupForm()
         const user = Object.fromEntries(formData.entries())
         console.log(user)
 
+        const { sts, msg } = validateForm(user)
 
-        createNewUser(user, formCreateUser)
+        if (sts) createNewUser(user, formCreateUser)
+        else {
+            err.style.display = 'block'
+            err.innerHTML = `<strong>${msg}</strong>`
+        }
+
+        
     }
 }
 

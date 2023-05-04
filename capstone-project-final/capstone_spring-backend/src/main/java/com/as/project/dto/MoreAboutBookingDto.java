@@ -56,7 +56,12 @@ public class MoreAboutBookingDto {
     @NotEmpty(message = "ttimeTAke cant be empty")
     @NotNull(message = "ttimeTAke cant be null")
     @NotBlank(message = "ttimeTAke cant be blank")
-    private int ttimeTAke;
+    private long ttimeTAke;
+
+    @NotEmpty(message = "price cant be empty")
+    @NotNull(message = "price cant be null")
+    @NotBlank(message = "price cant be blank")
+    private long price;
     
 
     

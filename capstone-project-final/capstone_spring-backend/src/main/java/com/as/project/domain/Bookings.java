@@ -38,5 +38,7 @@ public class Bookings {
     @Column(name = "bookingDestination")
     private String bookingDestination;
 
+    
+
 }
 

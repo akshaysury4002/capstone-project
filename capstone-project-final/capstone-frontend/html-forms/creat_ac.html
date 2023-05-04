@@ -55,43 +55,59 @@
           border: 3px solid black;
           border-radius: 10px;">
 
+
+
+
          <div class="formInner" style="margin-top: 30px; padding-left: 10px; width: 460px;padding-bottom: 20px;">
 
-            <div class="mb-5">
-                <label for="validationDefault01" class="form-label">Name</label>
-                <input type="text" class="form-control" id="txtName" placeholder="Enter your Name"  name="uname" required>
-            </div>
 
-            <div class="mb-5">
-              <label for="validationDefault01" class="form-label">Role</label>
-              <select class="form-select" aria-label="Default select example" name="role" required>
-                  <option selected>Role</option>
-                  <option value="admin">Admin</option>
-                  <option value="user">User</option>
-              </select>
-           </div>
+          <div class="row">
+            <div class="col"  style="height: 10px; font-size: 15px;"role="alert">
+              <div class="alert alert-danger" id="errMsg">
+              </div>
+            </div>
+          </div>
           
-              <div class="mb-5">
-                <label for="validationDefault01" class="form-label" >Email</label>
-                <div class="input-group">
-                  <span class="input-group-text" id="inputGroupPrepend2">@</span>
-                  <input type="email" class="form-control" id="txtEmail" placeholder="Enter your Email" name="email" required>
-                </div>
+          <div class="row mb-3" style="margin-top:50px;">
+            <div class="mb-4">
+              <label for="validationDefault01" class="form-label">Name</label>
+              <input type="text" class="form-control" id="txtName" placeholder="Enter your Name"  name="uname" required>
+          </div>
+
+          <div class="mb-4">
+            <label for="validationDefault01" class="form-label">Role</label>
+            <select class="form-select" aria-label="Default select example" name="role" required>
+                <option selected>Role</option>
+                <option value="admin">Admin</option>
+                <option value="user">User</option>
+            </select>
+         </div>
+        
+            <div class="mb-4">
+              <label for="validationDefault01" class="form-label" >Email</label>
+              <div class="input-group">
+                <span class="input-group-text" id="inputGroupPrepend2">@</span>
+                <input type="email" class="form-control" id="txtEmail" placeholder="Enter your Email" name="email" required>
               </div>
+            </div>
+        
+            <div class="mb-4">
+              <label for="validationDefault01" class="form-label">password</label>
+              <input type="password" class="form-control" id="TxtPassword" placeholder="create password" name="password" required>
+            </div>
+            
+            <div class="mb-4">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required>
+                <label class="form-check-label" for="invalidCheck2">
+                  above details are write
+                </label>
+              </div>
+            </div>
+          </div>
           
-              <div class="mb-5">
-                <label for="validationDefault01" class="form-label">password</label>
-                <input type="password" class="form-control" id="TxtPassword" placeholder="create password" name="password" required>
-              </div>
-              
-              <div class="mb-3">
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required>
-                  <label class="form-check-label" for="invalidCheck2">
-                    above details are write
-                  </label>
-                </div>
-              </div>
+
+            
 
           </div>
 
