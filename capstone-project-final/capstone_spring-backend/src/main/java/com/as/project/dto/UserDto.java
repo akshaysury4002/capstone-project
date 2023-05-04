@@ -25,20 +25,20 @@ public class UserDto
     @NotBlank(message = "Username cant be blank")
     private String uname;
 
-    @NotEmpty(message = "Username cant be empty")
-    @NotNull(message = "Username cant be null")
-    @NotBlank(message = "Username cant be blank")
+    @NotEmpty(message = "email cant be empty")
+    @NotNull(message = "email cant be null")
+    @NotBlank(message = "email cant be blank")
     private String email;
     
-    @NotEmpty(message = "Username cant be empty")
-    @NotNull(message = "Username cant be null")
-    @NotBlank(message = "Username cant be blank")
+    @NotEmpty(message = "password cant be empty")
+    @NotNull(message = "password cant be null")
+    @NotBlank(message = "password cant be blank")
     @Size(min = 8, max = 15, message = "Password must be between 8 and 15 characters long")
     private String password;
 
-    @NotEmpty(message = "Username cant be empty")
-    @NotNull(message = "Username cant be null")
-    @NotBlank(message = "Username cant be blank")
+    @NotEmpty(message = "role cant be empty")
+    @NotNull(message = "role cant be null")
+    @NotBlank(message = "role cant be blank")
     private String role;
     
 }

@@ -15,4 +15,4 @@ GET http://localhost:8080/booking/list
 DELETE http://localhost:8080/booking/delete/24
 
 ### Get All user 
-GET http://localhost:8080/booking/getbookingbyid/
+GET http://localhost:8080/booking/getbookingbyid/38
