@@ -48,18 +48,22 @@
                 <button type="button" class="btn btn-success" onclick="window.location='./create-booking-slot.html';" style="height: 50px;" data-bs-dismiss="modal">Create Booking Slot</a></button>
               </div>
             </div>
-            <table class="table table-bordered" id="tableBooking">
+
+            
+              <table class="table table-striped" aria-describedby="mydesc">
+              
                 <thead>
                   <tr>
-                    <th>booking #</th>
-                    <th>Vahicle name</th>
-                    <th>Booking From</th>
-                    <th>Destination</th>
-                    <th>Date</th>
-                    <th>Action</th>
+                    <th scope="col">#</th>
+                    <th scope="col">Vahicle name</th>
+                    <th scope="col">Booking From</th>
+                    <th scope="col">Destination</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Action</th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody id="tableBooking">
+
                 </tbody>
               </table>
         
