@@ -66,7 +66,7 @@ public class BookingsController {
 
         final AppResponse<Integer> response = AppResponse.<Integer>builder()
             .sts("success")
-            .msg("Invoice Deleted Successfully")
+            .msg("booking Deleted Successfully")
             .bd(sts)
             .build();
 
@@ -80,7 +80,7 @@ public class BookingsController {
 
         final AppResponse<Integer> response = AppResponse.<Integer>builder()
                                                     .sts("success")
-                                                    .msg("Invoice Updated Successfully")
+                                                    .msg("booking Updated Successfully")
                                                     .bd(sts)
                                                     .build();
 
@@ -94,7 +94,7 @@ public class BookingsController {
 
         final AppResponse<BookingsDto> response = AppResponse.<BookingsDto>builder()
                                                         .sts("success")
-                                                        .msg("User Details")
+                                                        .msg("booking Details")
                                                         .bd(dto)
                                                         .build();
         return ResponseEntity.ok().body(response);
