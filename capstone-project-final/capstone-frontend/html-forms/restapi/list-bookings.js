@@ -54,6 +54,7 @@ function apiFetchAllBookings(table) {
             propulateActualData(table, bd)
         })
         .catch(err => console.log(err))
+        
 }
 
 function apiFetchAllCustomerInvoices(table, bookingId) {

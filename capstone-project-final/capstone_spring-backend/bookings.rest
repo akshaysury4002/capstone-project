@@ -4,7 +4,7 @@ POST http://localhost:8080/booking/createNewBookings HTTP/1.1
 content-type: application/json
 
 {
-"bookingId" : 7, "bookingVname" : "ppppp", "bookingFrom" : "pune", "bookingDestination" : "rar","date": "2020-01-01", "typeVahi":"ac", "ttimeTAke": 7 ,"price" : 9000 ,"time":"07:15:39"
+"bookingId" : 7, "bookingVname" : "ppppp", "bookingFrom" : "tarale", "bookingDestination" : "mumbai","date": "2020-01-01", "typeVahi":"ac", "ttimeTAke": 7 ,"price" : 9000 ,"time":"07:15:39"
 }
 
 
@@ -19,5 +19,5 @@ GET http://localhost:8080/booking/getbookingbyid/19
 
 ### get bi bookingfrom
 
-GET http://localhost:8080/booking/filterBy/pune
+GET http://localhost:8080/booking/filterBy/tarale/rar
 

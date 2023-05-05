@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.as.project.domain.Bookings;
 import com.as.project.dto.AppResponse;
 import com.as.project.dto.BookingsDto;
 import com.as.project.service.BookingsService;
@@ -106,6 +105,21 @@ public class BookingsController {
     public ResponseEntity<AppResponse< List<BookingsDto>>> findByBookingFrom(@PathVariable String bookingFrom) {
 
         List<BookingsDto> domain = service.findByBookingFrom(bookingFrom);
+
+        final AppResponse<List<BookingsDto>> response = AppResponse.<List<BookingsDto>>builder()
+                                                        .sts("success")
+                                                        .msg("booking Details")
+                                                        .bd(domain)
+                                                        .build();
+        return ResponseEntity.ok().body(response);
+    }
+
+
+    @CrossOrigin
+    @GetMapping(value = "/filterByFD/{bookingFrom},{bookingDestination}", produces = MediaType.APPLICATION_JSON_VALUE )
+    public ResponseEntity<AppResponse< List<BookingsDto>>> findByBookingFrom(@PathVariable String bookingFrom,String bookingDestination) {
+
+        List<BookingsDto> domain = service.findByBookingFromAndBookingDestination(bookingFrom,bookingDestination);
 
         final AppResponse<List<BookingsDto>> response = AppResponse.<List<BookingsDto>>builder()
                                                         .sts("success")

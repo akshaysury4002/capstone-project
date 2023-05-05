@@ -64,5 +64,15 @@ public class BookingServiceImpl implements BookingsService {
                          .collect(Collectors.toList());
     }
 
+    @Override
+    public List<BookingsDto> findByBookingFromAndBookingDestination(String bookingFrom, String bookingDestination) {
+       
+        return repository.findByBookingFromAndBookingDestination(bookingFrom,bookingDestination)
+                         .stream()
+                      // .map( invoice -> mapper.toDto(invoice) )
+                         .map(mapper::toDto)
+                         .collect(Collectors.toList());
+    }
+
 
 }
