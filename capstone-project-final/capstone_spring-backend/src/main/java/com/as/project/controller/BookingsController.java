@@ -1,7 +1,9 @@
 package com.as.project.controller;
 
+import java.time.LocalDate;
 import java.util.List;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.as.project.dto.AppResponse;
@@ -101,30 +104,55 @@ public class BookingsController {
     }
 
 
-    @GetMapping(value = "/filterBy/{bookingFrom}", produces = MediaType.APPLICATION_JSON_VALUE )
+    @GetMapping(value = "/filterByFrom/{bookingFrom}", produces = MediaType.APPLICATION_JSON_VALUE )
     public ResponseEntity<AppResponse< List<BookingsDto>>> findByBookingFrom(@PathVariable String bookingFrom) {
 
-        List<BookingsDto> domain = service.findByBookingFrom(bookingFrom);
+        List<BookingsDto> dto = service.findByBookingFrom(bookingFrom);
 
         final AppResponse<List<BookingsDto>> response = AppResponse.<List<BookingsDto>>builder()
                                                         .sts("success")
                                                         .msg("booking Details")
-                                                        .bd(domain)
+                                                        .bd(dto)
+                                                        .build();
+        return ResponseEntity.ok().body(response);
+    }
+
+    @GetMapping(value = "/filterByDestination/{bookingDestination}", produces = MediaType.APPLICATION_JSON_VALUE )
+    public ResponseEntity<AppResponse< List<BookingsDto>>> findByBookingDestination(@PathVariable String bookingDestination) {
+
+        List<BookingsDto> dto = service.findByBookingDestination(bookingDestination);
+
+        final AppResponse<List<BookingsDto>> response = AppResponse.<List<BookingsDto>>builder()
+                                                        .sts("success")
+                                                        .msg("booking Details")
+                                                        .bd(dto)
                                                         .build();
         return ResponseEntity.ok().body(response);
     }
 
 
-    @CrossOrigin
-    @GetMapping(value = "/filterByFD/{bookingFrom},{bookingDestination}", produces = MediaType.APPLICATION_JSON_VALUE )
-    public ResponseEntity<AppResponse< List<BookingsDto>>> findByBookingFrom(@PathVariable String bookingFrom,String bookingDestination) {
+    @GetMapping(value = "/filterByFD/{bookingFrom}/{bookingDestination}", produces = MediaType.APPLICATION_JSON_VALUE )
+    public ResponseEntity<AppResponse< List<BookingsDto>>> findByBookingFrom(@PathVariable String bookingFrom,@PathVariable String bookingDestination) {
 
-        List<BookingsDto> domain = service.findByBookingFromAndBookingDestination(bookingFrom,bookingDestination);
+        List<BookingsDto> dto = service.findByBookingFromAndBookingDestination(bookingFrom,bookingDestination);
 
         final AppResponse<List<BookingsDto>> response = AppResponse.<List<BookingsDto>>builder()
                                                         .sts("success")
                                                         .msg("booking Details")
-                                                        .bd(domain)
+                                                        .bd(dto)
+                                                        .build();
+        return ResponseEntity.ok().body(response);
+    }
+
+    @GetMapping(value = "/filterByFDT/{bookingFrom}/{bookingDestination}/{date}", produces = MediaType.APPLICATION_JSON_VALUE )
+    public ResponseEntity<AppResponse< List<BookingsDto>>> findByBookingFromAndBookingDestinationAndDate(@PathVariable String bookingFrom,@PathVariable String bookingDestination,@PathVariable("date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
+
+        List<BookingsDto> dto = service.findByBookingFromAndBookingDestinationAndDate(bookingFrom,bookingDestination,date);
+
+        final AppResponse<List<BookingsDto>> response = AppResponse.<List<BookingsDto>>builder()
+                                                        .sts("success")
+                                                        .msg("booking Details")
+                                                        .bd(dto)
                                                         .build();
         return ResponseEntity.ok().body(response);
     }

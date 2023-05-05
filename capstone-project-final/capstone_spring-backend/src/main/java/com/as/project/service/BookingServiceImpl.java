@@ -1,5 +1,6 @@
 package com.as.project.service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -59,7 +60,16 @@ public class BookingServiceImpl implements BookingsService {
     public List<BookingsDto> findByBookingFrom(String bookingFrom) {
         return repository.findByBookingFrom(bookingFrom)
                          .stream()
-                      // .map( invoice -> mapper.toDto(invoice) )
+                         .map(mapper::toDto)
+                         .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<BookingsDto> findByBookingDestination(String bookingDestination) {
+
+        
+        return repository.findByBookingDestination(bookingDestination)
+                         .stream()
                          .map(mapper::toDto)
                          .collect(Collectors.toList());
     }
@@ -69,7 +79,14 @@ public class BookingServiceImpl implements BookingsService {
        
         return repository.findByBookingFromAndBookingDestination(bookingFrom,bookingDestination)
                          .stream()
-                      // .map( invoice -> mapper.toDto(invoice) )
+                         .map(mapper::toDto)
+                         .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<BookingsDto> findByBookingFromAndBookingDestinationAndDate(String bookingFrom,String bookingDestination, LocalDate date) {
+        return repository.findByBookingFromAndBookingDestinationAndDate(bookingFrom,bookingDestination,date)
+                         .stream()
                          .map(mapper::toDto)
                          .collect(Collectors.toList());
     }
