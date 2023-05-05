@@ -38,6 +38,7 @@ function showConfirmDeleteModal(bookingId) {
     const btDl = document.getElementById('btDl')
     btDl.onclick = () => {
         apiCallDeleteBooking(bookingId, modal)
+        
         window.location.reload()
         
     }

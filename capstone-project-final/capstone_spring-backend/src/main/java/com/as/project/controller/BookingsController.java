@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.as.project.domain.Bookings;
 import com.as.project.dto.AppResponse;
 import com.as.project.dto.BookingsDto;
 import com.as.project.service.BookingsService;
@@ -48,12 +49,12 @@ public class BookingsController {
     @CrossOrigin
     @GetMapping(value = "/list", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<AppResponse<List<BookingsDto>>> allBooking() {
-        List<BookingsDto> users = service.all();
+        List<BookingsDto> booking = service.all();
 
         AppResponse<List<BookingsDto>> response = AppResponse.<List<BookingsDto>>builder()
                                                             .sts("success")
                                                             .msg("users")
-                                                            .bd(users)
+                                                            .bd(booking)
                                                             .build();
 
         return ResponseEntity.ok().body(response);
@@ -99,5 +100,20 @@ public class BookingsController {
                                                         .build();
         return ResponseEntity.ok().body(response);
     }
+
+
+    @GetMapping(value = "/filterBy/{bookingFrom}", produces = MediaType.APPLICATION_JSON_VALUE )
+    public ResponseEntity<AppResponse< List<BookingsDto>>> findByBookingFrom(@PathVariable String bookingFrom) {
+
+        List<BookingsDto> domain = service.findByBookingFrom(bookingFrom);
+
+        final AppResponse<List<BookingsDto>> response = AppResponse.<List<BookingsDto>>builder()
+                                                        .sts("success")
+                                                        .msg("booking Details")
+                                                        .bd(domain)
+                                                        .build();
+        return ResponseEntity.ok().body(response);
+    }
+    
 
 }

@@ -11,9 +11,9 @@ function setupForm() {
     const err = document.getElementById('errMsg')
     err.style.display = 'none'
 
-    const formSignup = document.getElementById('formLogin')
+    const formLogin = document.getElementById('formLogin')
 
-    formSignup.onsubmit = ev => { // when form is submitted, this function would be called
+    formLogin.onsubmit = ev => { // when form is submitted, this function would be called
 
         ev.preventDefault() // stop the default behaviour of refreshing the page
 
@@ -24,7 +24,7 @@ function setupForm() {
 
         const { sts, msg } = validateForm(user)
 
-        if (sts) apiLogin(user, formSignup)
+        if (sts) apiLogin(user, formLogin)
         else {
             err.style.display = 'block'
             err.innerHTML = `<strong>${msg}</strong>`

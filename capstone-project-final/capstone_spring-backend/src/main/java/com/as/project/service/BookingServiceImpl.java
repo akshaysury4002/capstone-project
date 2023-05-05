@@ -55,6 +55,14 @@ public class BookingServiceImpl implements BookingsService {
         return mapper.toDto(op.orElseThrow(() -> new BookingNotFoundException("Booking " + bookingId + " Not Found")));
     }
 
-   
-    
+    @Override
+    public List<BookingsDto> findByBookingFrom(String bookingFrom) {
+        return repository.findByBookingFrom(bookingFrom)
+                         .stream()
+                      // .map( invoice -> mapper.toDto(invoice) )
+                         .map(mapper::toDto)
+                         .collect(Collectors.toList());
+    }
+
+
 }
