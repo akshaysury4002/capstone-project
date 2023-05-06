@@ -46,7 +46,7 @@
                 <h2 class="p-2 ">Bookings</h2>
               </div>
               <div class="col" style="text-align: end; margin-top: 8px;">
-                <button type="button" class="btn btn-success" onclick="window.location='./create-booking-slot.html';" style="height: 50px;" data-bs-dismiss="modal">Create Booking Slot</a></button>
+                <button type="button" class="btn btn-success" onclick="window.location='./userHomePage.html';" style="height: 50px; width: 150px;" data-bs-dismiss="modal">Back</a></button>
               </div>
             </div>
 
@@ -60,11 +60,14 @@
                     <th scope="col">Booking From</th>
                     <th scope="col">Destination</th>
                     <th scope="col">Date</th>
-                    <th scope="col">Action</th>
-                    
+                    <th scope="col">time</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Total Time for Journey</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Action</th> 
                   </tr>
                 </thead>
-                <tbody id="tableBooking">
+                <tbody id="tableViewMoreetalis">
 
                 </tbody>
               </table>
@@ -73,27 +76,9 @@
           </div>
     </section>
 
-     <!-- Modal -->
-  <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Confirm </h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          Do You Really Want To Delete ?
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-danger" id="btDl">Delete It</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
 </div>
 
-    <script src="./restapi/list-bookings.js"></script>
+<script src="./restapi/view-more-user.js"></script>
+
 </body>
 </html>

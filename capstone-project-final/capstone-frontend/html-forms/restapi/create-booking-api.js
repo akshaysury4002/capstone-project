@@ -1,3 +1,12 @@
+
+const validateForm = ({ price, ttimeTAke }) => {
+
+    if (price <=0) return { msg: 'invalid price', sts: false}
+    if (ttimeTAke <=0) return { msg: 'invalid total time', sts: false}
+
+    return { sts : 'success', msg :'all fields are valid' }
+}
+
 function createNewBooking(booking, form)
 {
     const headers = {
@@ -18,6 +27,11 @@ function createNewBooking(booking, form)
 
 function setupForm()
 {
+
+    const err = document.getElementById('errMsg')
+    err.style.display = 'none'
+
+    
     const formCreateBooking= document.getElementById('formCreateBooking')
 
     formCreateBooking.onsubmit = ev => {
@@ -44,8 +58,16 @@ function setupForm()
         const booking = Object.fromEntries(formData.entries())
         console.log(booking)
 
+        const { sts, msg } = validateForm(booking)
 
-        createNewBooking(booking, formCreateBooking)
+        if (sts) createNewBooking(booking, formCreateBooking)
+        else {
+            err.style.display = 'block'
+            err.innerHTML = `<strong>${msg}</strong>`
+        }
+
+
+        
     }
 }
 

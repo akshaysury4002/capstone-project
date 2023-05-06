@@ -5,6 +5,16 @@ const readIdQueryParam = () => {
     return params.bookingId
 }
 
+
+const validateForm = ({ price, ttimeTAke }) => {
+
+    if (price <=0) return { msg: 'invalid price', sts: false}
+    if (ttimeTAke <=0) return { msg: 'invalid total time', sts: false}
+
+    return { sts : 'success', msg :'all fields are valid' }
+}
+
+
 console.log(readIdQueryParam())
 
 function apiGetBookingDetails() {
@@ -51,6 +61,10 @@ function populateForm(form, data) {
 }
 
 function setupForm() {
+
+    const err = document.getElementById('errMsg')
+    err.style.display = 'none'
+
     const formUpdateBooking = document.getElementById('formUpdateBooking')
 
     formUpdateBooking.onsubmit = ev => { // when form is submitted, this function would be called
@@ -76,7 +90,16 @@ function setupForm() {
         const bookings = { ...rawData, bookingId }
         console.log(bookings)
 
-        apiUpdateExistingForm(bookings, formUpdateBooking) // we are pass form object to reset the form on success
+        const { sts, msg } = validateForm(bookings)
+
+        if (sts) apiUpdateExistingForm(bookings, formUpdateBooking)
+        else {
+            err.style.display = 'block'
+            err.innerHTML = `<strong>${msg}</strong>`
+        }
+
+
+         // we are pass form object to reset the form on success
         
     }
 }

@@ -31,6 +31,7 @@
               <li class="nav-item"><a href="#" class="nav-link" style="text-decoration: none;color: aliceblue; font-size: 20px;">Home</a></li>
               <li class="nav-item"><a href="#" class="nav-link" style="text-decoration: none;color: aliceblue; font-size: 20px;">Service</a></li>
               <li class="nav-item"><a href="#" class="nav-link" style="text-decoration: none;color: aliceblue; font-size: 20px;">About us</a></li>
+              <li class="nav-item"><a href="#" class="nav-link"style="text-decoration: none;color: aliceblue; font-size: 20px;">My resvation</a></li>
               <li class="nav-item"><a href="#" class="nav-link" style="text-decoration: none;color: aliceblue; font-size: 20px;"><img style="height: 30px;" src="./photos/Screenshot 2023-04-21 112117.png" alt=""> My Profile</a></li>
               <li class="nav-item"><a href="./start.html" class="nav-link" style="text-decoration: none;color: aliceblue; font-size: 20px;">Log Out</a></li>
             </ul>
@@ -46,7 +47,7 @@
                 <h2 class="p-2 ">Bookings</h2>
               </div>
               <div class="col" style="text-align: end; margin-top: 8px;">
-                <button type="button" class="btn btn-success" onclick="window.location='./create-booking-slot.html';" style="height: 50px;" data-bs-dismiss="modal">Create Booking Slot</a></button>
+                <button type="button" class="btn btn-success" onclick="window.location='./userHomePage.html';" style="height: 50px; width: 150px;" data-bs-dismiss="modal">Back</a></button>
               </div>
             </div>
 
@@ -64,7 +65,7 @@
                     
                   </tr>
                 </thead>
-                <tbody id="tableBooking">
+                <tbody id="tableFilter">
 
                 </tbody>
               </table>
@@ -73,27 +74,8 @@
           </div>
     </section>
 
-     <!-- Modal -->
-  <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Confirm </h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          Do You Really Want To Delete ?
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-danger" id="btDl">Delete It</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
 </div>
 
-    <script src="./restapi/list-bookings.js"></script>
+<script src="./restapi/filter-api.js"></script>
 </body>
 </html>
