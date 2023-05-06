@@ -13,7 +13,9 @@ function apiGetBookingDetails(table) {
     console.log(bookingDestination);
     console.log(date);
 
-    axios.get(`http://localhost:8080/booking/filterByFDT/${bookingFrom}/${bookingDestination}/${date}`)
+    if(bookingFrom==null & date==null)
+    {
+        axios.get(`http://localhost:8080/booking/filterByDestination/${bookingDestination}`)
             .then(res => {
                    const { data } = res
                    console.log(data)  
@@ -22,6 +24,37 @@ function apiGetBookingDetails(table) {
                  propulateActualData(table, bd)
             })
         .catch(err => console.log(err))
+
+
+    }
+    else if(bookingDestination==null & date==null)
+    {
+        axios.get(`http://localhost:8080/booking/filterByFrom/${bookingFrom}`)
+            .then(res => {
+                   const { data } = res
+                   console.log(data)  
+                   const { sts, msg, bd } = data
+
+                 propulateActualData(table, bd)
+            })
+        .catch(err => console.log(err))
+
+
+    }
+    else
+    {
+        axios.get(`http://localhost:8080/booking/filterByFDT/${bookingFrom}/${bookingDestination}/${date}`)
+            .then(res => {
+                   const { data } = res
+                   console.log(data)  
+                   const { sts, msg, bd } = data
+
+                 propulateActualData(table, bd)
+            })
+        .catch(err => console.log(err))
+
+
+    }
 
         
 }

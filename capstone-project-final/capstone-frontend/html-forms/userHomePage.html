@@ -68,7 +68,7 @@
                 </div>
 
                 <div class="col" style="text-align: center;">
-                    <input type="submit" value="Search" class="btn btn-success" style="height:70px;margin-left: -25PX; width: 110%;font-size: 30px;font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
+                    <input type="submit" value="Search" class="btn btn-success" style="height:70px;margin-left: -23.5PX; width: 110%;font-size: 30px;font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
                 </div>
 
             </div>
@@ -88,27 +88,67 @@
           </div>
         </div>
 
-        <div>
-        
-          <table class="table table-striped" aria-describedby="mydesc">
-          
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Vahicle name</th>
-                <th scope="col">Booking From</th>
-                <th scope="col">Destination</th>
-                <th scope="col">Date</th>
-                <th scope="col">Action</th>
-                
-              </tr>
-            </thead>
-            <tbody id="tableUser">
 
-            </tbody>
-          </table>
+        <div style="display: flex;">
+
+            <div class="container" style=" width: 300px;margin-left: -10px;margin-right: 10px;margin-top: 10px;
+            height: 500px;
+            background: linear-gradient();
+            border: 3px solid black;
+            border-radius: 10px;">
+
+                <form class="row" action="viewBookingToUser.html" style="margin-top: 20px;">
+
+                    <div class="mb-3">
+                      <label for="validationDefault01" class="form-label">Picking from</label>
+                      <div class="input-group">
+                        <input type="text" class="form-control" id="txtbookingFrom" placeholder="stating point of journey" name="bookingFrom" required>
+                      </div>
+                    </div>
+                
+                    <div class="col" style="text-align: end; padding-right: 200px;">
+                      <input type="submit" value="filter by Picking point" class="btn btn-success"style="width: 160px;height: 40px;font-family: sans-serif;">
+                    </div>
+                
+                  </form>
+                
+                  <form class="row" action="viewBookingToUser.html" style="margin-top: 40px;">
+                    <div class="mb-3">
+                      <label for="validationDefault01" class="form-label">Destination</label>
+                      <div class="input-group">
+                        <input type="text" class="form-control" id="txtbookingDestination" placeholder="Enter your Destination" name="bookingDestination" required>
+                      </div>
+                    </div>
+                
+                    <div class="col" style="text-align: end; padding-right: 200px;">
+                      <input type="submit" value="filter by Destination" class="btn btn-success"style="width: 160px;height: 40px;font-family: sans-serif;">
+                    </div>
+                
+                  </form>
+            </div>
+
+            <div style="width: 100%;">
+                <table class="table table-striped" aria-describedby="mydesc">
+          
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Vahicle name</th>
+                    <th scope="col">Booking From</th>
+                    <th scope="col">Destination</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Action</th>
+                    
+                  </tr>
+                </thead>
+                <tbody id="tableUser">
     
-        </div>
+                </tbody>
+              </table>
+            </div>
+        
+        </div>         
+
       </div>
 </section>
 

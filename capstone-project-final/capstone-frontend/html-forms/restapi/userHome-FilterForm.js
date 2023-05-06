@@ -12,6 +12,32 @@ function handleSubmit(){
     console.log(date)
 }
 
+function handleBookingFrom(){
+
+    const bookingFrom=document.getElementById('bookingFrom').value
+
+    console.log(bookingFrom)
+    const bookingDestination=document.getElementById('bookingDestination').value
+
+    console.log(bookingDestination)
+    const date=document.getElementById('date').value
+
+    console.log(date)
+}
+
+function handleDestination(){
+
+    const bookingFrom=document.getElementById('bookingFrom').value
+
+    console.log(bookingFrom)
+    const bookingDestination=document.getElementById('bookingDestination').value
+
+    console.log(bookingDestination)
+    const date=document.getElementById('date').value
+
+    console.log(date)
+}
+
 
 function setupTable() {
     const table = document.getElementById('tableUser')
