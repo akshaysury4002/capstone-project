@@ -40,10 +40,9 @@ public class User {
     private String uname;
 
     @Column(unique = true,nullable = false, name = "email")
-    
     private String email;
 
-    @Column(unique = true,nullable = false, name = "password")
+    @Column(name = "password")
     private String password;
 
     @Column(name = "role") 

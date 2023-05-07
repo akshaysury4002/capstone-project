@@ -155,6 +155,6 @@ public class BookingsController {
                                                         .build();
         return ResponseEntity.ok().body(response);
     }
-    
+
 
 }

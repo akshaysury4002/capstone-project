@@ -12,6 +12,7 @@ import com.as.project.domain.Bookings;
 import com.as.project.domain.User;
 
 import com.as.project.dto.LoginDto;
+import com.as.project.dto.UserBookingDto;
 import com.as.project.dto.UserDto;
 import com.as.project.exception.BookingNotFoundException;
 import com.as.project.exception.DuplicateEventException;
@@ -112,5 +113,24 @@ public class UserServiceImpl implements UserService {
         return 1;
 
     }
+
+    @Override
+    public List<UserBookingDto> getAllBookings(Long userId) {
+        User user = repository.findById(userId)
+                .orElseThrow(() -> new UserNotFoundException("No User found for " + userId + " ID"));
+
+        if (user.getRole().equals("admin"))
+            throw new InvalidRoleException("No bookings for Admin");
+
+        List<UserBookingDto> collect = user.getBookings()
+                .stream()
+                .map(bookings -> dynamicMapper.convertor(bookings, new UserBookingDto()))
+                .collect(Collectors.toList());
+        if (collect.isEmpty())
+            throw new BookingNotFoundException("No bookings found book one.");
+
+        return collect;
+    }
    
+
 }

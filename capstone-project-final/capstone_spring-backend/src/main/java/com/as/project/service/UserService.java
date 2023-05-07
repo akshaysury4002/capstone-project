@@ -3,8 +3,8 @@ package com.as.project.service;
 
 import java.util.List;
 
-import com.as.project.dto.BookingsDto;
 import com.as.project.dto.LoginDto;
+import com.as.project.dto.UserBookingDto;
 import com.as.project.dto.UserDto;
 import com.as.project.exception.UserNotFoundException;
 
@@ -25,5 +25,8 @@ public interface UserService {
     UserDto login(LoginDto dto) throws UserNotFoundException;
 
     Integer bookReservation(Long userId,Long bookingsId);
+
+    List<UserBookingDto> getAllBookings(Long userId);
+
 
 }

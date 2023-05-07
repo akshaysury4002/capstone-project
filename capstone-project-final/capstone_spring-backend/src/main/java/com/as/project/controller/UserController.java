@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.as.project.dto.AppResponse;
 import com.as.project.dto.LoginDto;
+import com.as.project.dto.UserBookingDto;
 import com.as.project.dto.UserDto;
 import com.as.project.service.UserService;
 
@@ -156,10 +157,16 @@ public class UserController {
                 .msg("new reservation booked successfully.")
                 .bd(bookEvent)
                 .build();
-                
+
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
+
+    @GetMapping(value = "/getuserbookings/{userId}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<UserBookingDto>> findAll(@PathVariable Long userId) {
+
+        return ResponseEntity.ok().body(service.getAllBookings(userId));
+    }
 
     
 }

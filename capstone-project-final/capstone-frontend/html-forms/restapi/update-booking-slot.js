@@ -6,10 +6,14 @@ const readIdQueryParam = () => {
 }
 
 
-const validateForm = ({ price, ttimeTAke }) => {
+const validateForm = ({ price, ttimeTAke,date }) => {
+
+    var CurrentDate = new Date();
+    date = new Date(date);
 
     if (price <=0) return { msg: 'invalid price', sts: false}
     if (ttimeTAke <=0) return { msg: 'invalid total time', sts: false}
+    if (date <=CurrentDate) return { msg: 'invalid date', sts: false}
 
     return { sts : 'success', msg :'all fields are valid' }
 }

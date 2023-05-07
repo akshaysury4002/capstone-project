@@ -80,3 +80,8 @@ function apiCallDeleteBooking(bookingId, modal) {
         .then( ({ sts, msg, bd }) =>  modal.hide())
         .catch(console.log)
 }
+
+function logOut() {
+    localStorage.setItem("userId", null)
+    window.location.href = "../html-forms/login-ac.html"
+}
