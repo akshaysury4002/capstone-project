@@ -1,3 +1,9 @@
+
+function logOut() {
+    localStorage.setItem("userId", null)
+    window.location.href = "../html-forms/login-ac.html"
+}
+
 const readIdQueryParam = () => {
     const params = new Proxy(new URLSearchParams(window.location.search), {
         get: (searchParams, prop) => searchParams.get(prop),

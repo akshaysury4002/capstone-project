@@ -8,7 +8,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-
+import com.as.project.domain.Bookings;
 import com.as.project.domain.User;
 
 import com.as.project.dto.LoginDto;

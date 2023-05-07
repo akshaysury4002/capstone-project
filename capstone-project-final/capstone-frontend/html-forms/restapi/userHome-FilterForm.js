@@ -1,4 +1,10 @@
 
+
+function logOut() {
+    localStorage.setItem("userId", null)
+    window.location.href = "../html-forms/login-ac.html"
+}
+
 function handleSubmit(){
 
     const bookingFrom=document.getElementById('bookingFrom').value

@@ -1,5 +1,8 @@
 
-
+function logOut() {
+    localStorage.setItem("userId", null)
+    window.location.href = "../html-forms/login-ac.html"
+}
 
 function apiGetBookingDetails(table) {
 
