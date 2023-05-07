@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 import com.as.project.dto.AppResponse;
-import com.as.project.dto.CreateNewUserBookingDto;
 import com.as.project.dto.LoginDto;
 import com.as.project.dto.UserDto;
 import com.as.project.service.UserService;
@@ -34,6 +33,8 @@ import lombok.AllArgsConstructor;
 public class UserController {
 
     private final UserService service;
+
+    //create new user
 
     @CrossOrigin
     @PostMapping(value = "/", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -51,6 +52,9 @@ public class UserController {
 
     }
 
+
+    //login user
+
     @PostMapping(value = "/login", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<AppResponse<String>> loginUser(@Valid @RequestBody LoginDto dto) {
          String sts = service.loginUser(dto);
@@ -62,6 +66,8 @@ public class UserController {
                                                     .build();
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
+
+    //get all user
 
     @CrossOrigin
     @GetMapping(value = "/", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -77,6 +83,9 @@ public class UserController {
         return ResponseEntity.ok().body(response);
     }
 
+
+    //delete user
+
     @DeleteMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<AppResponse<Integer>> deleteUser(@PathVariable Long id) {
 
@@ -90,6 +99,8 @@ public class UserController {
 
         return ResponseEntity.status(200).body(response);
     }
+
+    //update user
 
     @PutMapping(value = "/updateUser", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<AppResponse<Integer>> updateUser(@RequestBody UserDto dto) {
@@ -106,6 +117,9 @@ public class UserController {
     }
 
 
+
+
+
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE )
     public ResponseEntity<AppResponse<UserDto>> getUserById(@PathVariable Long id) {
 
@@ -119,6 +133,8 @@ public class UserController {
         return ResponseEntity.ok().body(response);
     }
 
+    //login
+
     @CrossOrigin
     @PostMapping(value = "/loginn", produces = MediaType.APPLICATION_JSON_VALUE,consumes = MediaType.APPLICATION_JSON_VALUE )
     public ResponseEntity<AppResponse<UserDto>> login(@Valid @RequestBody LoginDto dto) {
@@ -131,20 +147,6 @@ public class UserController {
                                                 .build();
 
         return ResponseEntity.ok().body(res);
-    }
-
-    @CrossOrigin
-    @PostMapping(value = "/createbookingslot", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<AppResponse<Integer>> createNewUserbooking(@RequestBody CreateNewUserBookingDto dto) {
-        final Integer sts = service.createNewUserBooking(dto);
-
-        final AppResponse<Integer> response = AppResponse.<Integer>builder()
-                .sts("success")
-                .msg("user booking Created Successfully")
-                .bd(sts)
-                .build();
-        return ResponseEntity.status(HttpStatus.CREATED).body(response);
-
     }
 
     
