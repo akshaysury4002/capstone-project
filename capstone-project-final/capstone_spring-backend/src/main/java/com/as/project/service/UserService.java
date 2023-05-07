@@ -24,4 +24,6 @@ public interface UserService {
 
     UserDto login(LoginDto dto) throws UserNotFoundException;
 
+    Integer bookReservation(Long userId,Long bookingsId);
+
 }

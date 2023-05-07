@@ -149,5 +149,16 @@ public class UserController {
         return ResponseEntity.ok().body(res);
     }
 
+    @PostMapping(value = "/{userId}/userbookings/{bookingId}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<AppResponse<Integer>> bookReservation(@Valid @PathVariable Long userId, @PathVariable Long bookingId) {
+        Integer bookEvent = service.bookReservation(userId, bookingId);
+        AppResponse<Integer> response = AppResponse.<Integer>builder()
+                .msg("new reservation booked successfully.")
+                .bd(bookEvent)
+                .build();
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
+    }
+
+
     
 }
