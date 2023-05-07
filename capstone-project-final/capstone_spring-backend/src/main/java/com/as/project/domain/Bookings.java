@@ -2,13 +2,14 @@ package com.as.project.domain;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -54,5 +55,7 @@ public class Bookings {
     @Column(name = "price")
     private Double price;
 
+    @ManyToMany(mappedBy = "bookings")
+    private List<User> user;
 }
 

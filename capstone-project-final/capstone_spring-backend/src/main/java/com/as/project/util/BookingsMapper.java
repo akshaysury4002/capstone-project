@@ -11,7 +11,7 @@ public class BookingsMapper {
     
     public Bookings toDomain(BookingsDto dto)
     {
-        return new Bookings(dto.getBookingId(), dto.getBookingVname(), dto.getDate(), dto.getBookingFrom(), dto.getBookingDestination(), dto.getTime(), dto.getTypeVahi(), dto.getTtimeTAke(), dto.getPrice());
+        return new Bookings(dto.getBookingId(), dto.getBookingVname(), dto.getDate(), dto.getBookingFrom(), dto.getBookingDestination(), dto.getTime(), dto.getTypeVahi(), dto.getTtimeTAke(), dto.getPrice(), null);
          
     }
 

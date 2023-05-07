@@ -11,7 +11,7 @@ public class UserMapper {
     
    public User toDomain(UserDto dto)
     {
-        return new User(dto.getId(),dto.getUname(),dto.getEmail(),dto.getPassword(),dto.getRole());
+        return new User(dto.getId(),dto.getUname(),dto.getEmail(),dto.getPassword(),dto.getRole(), null);
         
     }
 
