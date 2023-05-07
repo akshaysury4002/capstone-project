@@ -157,4 +157,18 @@ public class BookingsController {
     }
 
 
+    @GetMapping(value = "/filterByDate/{date}", produces = MediaType.APPLICATION_JSON_VALUE )
+    public ResponseEntity<AppResponse< List<BookingsDto>>> findByDate(@PathVariable("date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
+
+        List<BookingsDto> dto = service.findByDate(date);
+
+        final AppResponse<List<BookingsDto>> response = AppResponse.<List<BookingsDto>>builder()
+                                                        .sts("success")
+                                                        .msg("booking Details")
+                                                        .bd(dto)
+                                                        .build();
+        return ResponseEntity.ok().body(response);
+    }
+
+
 }

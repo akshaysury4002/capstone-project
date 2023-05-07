@@ -26,5 +26,7 @@ public interface BookingsService {
     List<BookingsDto> findByBookingFromAndBookingDestination(String bookingFrom, String bookingDestination);
 
     List<BookingsDto> findByBookingFromAndBookingDestinationAndDate(String bookingFrom, String bookingDestination,LocalDate date);
+
+    List<BookingsDto> findByDate(LocalDate date);
     
 }

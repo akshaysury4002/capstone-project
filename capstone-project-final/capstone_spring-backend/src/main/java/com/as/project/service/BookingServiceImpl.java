@@ -91,5 +91,13 @@ public class BookingServiceImpl implements BookingsService {
                          .collect(Collectors.toList());
     }
 
+    @Override
+    public List<BookingsDto> findByDate(LocalDate date) {
+        return repository.findByDate(date)
+        .stream()
+        .map(mapper::toDto)
+        .collect(Collectors.toList());
+    }
+
 
 }

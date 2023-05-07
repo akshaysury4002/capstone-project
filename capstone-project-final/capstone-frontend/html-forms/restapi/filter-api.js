@@ -44,6 +44,21 @@ function apiGetBookingDetails(table) {
 
 
     }
+
+    else if(bookingDestination==null & bookingFrom==null)
+    {
+        axios.get(`http://localhost:8080/booking/filterByDate/${date}`)
+            .then(res => {
+                   const { data } = res
+                   console.log(data)  
+                   const { sts, msg, bd } = data
+
+                 propulateActualData(table, bd)
+            })
+        .catch(err => console.log(err))
+
+
+    }
     else
     {
         axios.get(`http://localhost:8080/booking/filterByFDT/${bookingFrom}/${bookingDestination}/${date}`)

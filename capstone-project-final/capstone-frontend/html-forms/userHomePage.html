@@ -92,7 +92,7 @@
         <div style="display: flex;">
 
             <div class="container" style=" width: 300px;margin-left: -10px;margin-right: 10px;margin-top: 10px;
-            height: 500px;
+            height: 530px;
             background: linear-gradient();
             border: 3px solid black;
             border-radius: 10px;">
@@ -100,7 +100,7 @@
                 <form class="row" action="viewFilterToUser.html" style="margin-top: 20px;">
 
                     <div class="mb-3">
-                      <label for="validationDefault01" class="form-label">Picking from</label>
+                      <label for="validationDefault01" class="form-label">Filter by boarding point</label>
                       <div class="input-group">
                         <input type="text" class="form-control" id="txtbookingFrom" placeholder="stating point of journey" name="bookingFrom" required>
                       </div>
@@ -114,7 +114,7 @@
                 
                   <form class="row" action="viewFilterToUser.html" style="margin-top: 40px;">
                     <div class="mb-3">
-                      <label for="validationDefault01" class="form-label">Destination</label>
+                      <label for="validationDefault01" class="form-label">Filter by Destination</label>
                       <div class="input-group">
                         <input type="text" class="form-control" id="txtbookingDestination" placeholder="Enter your Destination" name="bookingDestination" required>
                       </div>
@@ -125,6 +125,21 @@
                     </div>
                 
                   </form>
+
+                  <form class="row" action="viewFilterToUser.html" style="margin-top: 40px;">
+                    <div class="mb-3">
+                      <label for="validationDefault01" class="form-label">Filter by Date</label>
+                      <div class="input-group">
+                        <input type="date" class="form-control" id="txtDate" placeholder="Enter date" name="date" required>
+                      </div>
+                    </div>
+                
+                    <div class="col" style="text-align: end; padding-right: 200px;">
+                      <input type="submit" value="filter by date" class="btn btn-success"style="width: 160px;height: 40px;font-family: sans-serif;">
+                    </div>
+                
+                  </form>
+
             </div>
 
             <div style="width: 100%;">
