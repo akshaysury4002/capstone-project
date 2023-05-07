@@ -86,9 +86,33 @@ function propulateActualData(table, bookings) {
         row.insertCell(4).innerHTML = date
         row.insertCell(5).innerHTML = `
         <a href='${viewPageUrl}'>View</a> 
-        <a class='ms-2' href='#'>Comfirm</a>`
+        <a class='ms-2' href='#' onclick='confirmBooking(${bookingId})'>Comfirm</a>`
     } 
     }
 
 setupTable()
 
+
+function confirmBooking(bookingId) {
+    const userId = localStorage.getItem("userId");
+
+    console.log(userId)
+    console.log(bookingId)
+
+    const headers = {
+        'content-type': 'application/json'
+    }
+    axios.post(`http://localhost:8080/user/${userId}/userbookings/${bookingId}`, { headers })
+          
+        .then(res => {
+            showSuccessModalEventBook()
+        }).catch(err => console.log(err))
+}
+
+
+
+function showSuccessModalEventBook() {
+    const myModalEl = document.getElementById('successModalbooking');
+    const modal = new bootstrap.Modal(myModalEl)
+    modal.show()
+}

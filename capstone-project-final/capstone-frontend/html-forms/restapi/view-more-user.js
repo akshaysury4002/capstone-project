@@ -1,3 +1,10 @@
+
+
+function logOut() {
+    localStorage.setItem("userId", null)
+    window.location.href = "../html-forms/login-ac.html"
+}
+
 const readIdQueryParam = () => {
     const params = new Proxy(new URLSearchParams(window.location.search), {
         get: (searchParams, prop) => searchParams.get(prop),
@@ -41,7 +48,7 @@ function propulateActualData(table, bd) {
         row.insertCell(6).innerHTML = bd.typeVahi
         row.insertCell(7).innerHTML = bd.ttimeTAke
         row.insertCell(8).innerHTML = bd.price
-        row.insertCell(9).innerHTML = ` <a href='#'>Confirm</a>` 
+        row.insertCell(9).innerHTML = ` <a href='#' onclick='confirmBooking(${bd.bookingId})'>Confirm</a>` 
     }
 
 setupTable()
@@ -60,3 +67,26 @@ function showConfirmDeleteModal(bookingId) {
     }
 }
 
+function confirmBooking(bookingId) {
+    const userId = localStorage.getItem("userId");
+
+    console.log(userId)
+    console.log(bookingId)
+
+    const headers = {
+        'content-type': 'application/json'
+    }
+    axios.post(`http://localhost:8080/user/${userId}/userbookings/${bookingId}`, { headers })
+          
+        .then(res => {
+            showSuccessModalEventBook()
+        }).catch(err => console.log(err))
+}
+
+
+
+function showSuccessModalEventBook() {
+    const myModalEl = document.getElementById('successModalbooking');
+    const modal = new bootstrap.Modal(myModalEl)
+    modal.show()
+}

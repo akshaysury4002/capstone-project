@@ -156,6 +156,7 @@ public class UserController {
                 .msg("new reservation booked successfully.")
                 .bd(bookEvent)
                 .build();
+                
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
