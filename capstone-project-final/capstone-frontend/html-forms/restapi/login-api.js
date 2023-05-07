@@ -47,8 +47,9 @@ function apiLogin(user, form) {
             return httpResponse.data
 
         }).then(data => {
-            const { role } = data.bd
+            const { role , id} = data.bd
 
+            localStorage.setItem("userId",id)
             if(role == 'admin') window.location.href = '../html-forms/Admin-home.html'
             else  window.location.href = '../html-forms/userHomePage.html'
         } )

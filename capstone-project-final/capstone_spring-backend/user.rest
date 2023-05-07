@@ -22,7 +22,7 @@ POST http://localhost:8080/user/login HTTP/1.1
 content-type: application/json
 
 {
-"email" : "", "password" : "llls@123"
+"email" : "akshay@gmail.com", "password" : "Pass@123"
 }
 
 ### login 
@@ -30,7 +30,7 @@ POST http://localhost:8080/user/loginn HTTP/1.1
 content-type: application/json
 
 {
-"email" : "g@gmail", "password" : "llls@123"
+"email" : "akshay@gmail.com", "password" : "Pass@123"
 }
 
 
@@ -41,3 +41,16 @@ content-type: application/json
 {
 "email" : "", "password" : "llls@123"
 }
+
+###
+
+
+POST http://localhost:8080/user/createbookingslot HTTP/1.1 
+content-type: application/json
+
+{
+    "id" : 21,  "bookingId": 59
+}
+
+
+    

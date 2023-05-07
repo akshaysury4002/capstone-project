@@ -8,10 +8,13 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.as.project.domain.Bookings;
 import com.as.project.domain.User;
+import com.as.project.dto.CreateNewUserBookingDto;
 import com.as.project.dto.LoginDto;
 import com.as.project.dto.UserDto;
 import com.as.project.exception.UserNotFoundException;
+import com.as.project.repository.BookingsRepository;
 import com.as.project.repository.UserRepository;
 import com.as.project.util.DynamicMapper;
 import com.as.project.util.UserMapper;
@@ -23,6 +26,7 @@ import lombok.AllArgsConstructor;
 @Service
 public class UserServiceImpl implements UserService {
 
+    private final BookingsRepository bookingRepository;
     private final UserRepository repository;
     private final UserMapper mapper;
     private final DynamicMapper dynamicMapper;
@@ -87,5 +91,18 @@ public class UserServiceImpl implements UserService {
 
         return userDto;
     }
-    
+
+    @Override
+    public Integer createNewUserBooking(CreateNewUserBookingDto dto) {
+        User user = repository.findById(dto.getUserId())
+                .orElseThrow(() -> new UserNotFoundException("No Id found"));
+        Bookings bookings = new Bookings();
+        BeanUtils.copyProperties(dto, bookings);
+        bookings.getUser().add(user);
+        bookingRepository.save(bookings);
+        return 1;
+
+    }
+
+   
 }

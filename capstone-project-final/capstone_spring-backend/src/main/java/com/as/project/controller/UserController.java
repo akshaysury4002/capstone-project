@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 import com.as.project.dto.AppResponse;
+import com.as.project.dto.CreateNewUserBookingDto;
 import com.as.project.dto.LoginDto;
 import com.as.project.dto.UserDto;
 import com.as.project.service.UserService;
@@ -130,6 +131,20 @@ public class UserController {
                                                 .build();
 
         return ResponseEntity.ok().body(res);
+    }
+
+    @CrossOrigin
+    @PostMapping(value = "/createbookingslot", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<AppResponse<Integer>> createNewUserbooking(@RequestBody CreateNewUserBookingDto dto) {
+        final Integer sts = service.createNewUserBooking(dto);
+
+        final AppResponse<Integer> response = AppResponse.<Integer>builder()
+                .sts("success")
+                .msg("user booking Created Successfully")
+                .bd(sts)
+                .build();
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
+
     }
 
     
