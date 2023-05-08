@@ -57,20 +57,6 @@ function apiFetchAllBookings(table) {
         
 }
 
-function apiFetchAllCustomerInvoices(table, bookingId) {
-    const url = `http://localhost:8080/invoice/customer/${bookingId}`
-    axios.get(url)
-        .then(res => {
-            const { data } = res
-            console.log(data)  
-            const { sts, msg, bd } = data
-
-            propulateActualData(table, bd)
-        })
-        .catch(err => console.log(err))
-}
-
-
 function apiCallDeleteBooking(bookingId, modal) {
     const url = `http://localhost:8080/booking/delete/${bookingId}`
 
