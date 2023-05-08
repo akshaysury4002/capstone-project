@@ -1,12 +1,13 @@
 
 const validateForm = ({ price, ttimeTAke ,date }) => {
 
-    var CurrentDate = new Date();
-    date = new Date(date);
+    const CurrentDate = new Date();
+    console.log(CurrentDate)
+    const date1 = new Date(date);
 
     if (price <=0) return { msg: 'invalid price', sts: false}
     if (ttimeTAke <=0) return { msg: 'invalid total time', sts: false}
-    if (date <=CurrentDate) return { msg: 'invalid date', sts: false}
+    if (date1 < CurrentDate) return { msg: 'invalid date', sts: false}
 
     return { sts : 'success', msg :'all fields are valid' }
 }
@@ -41,10 +42,6 @@ function setupForm()
     formCreateBooking.onsubmit = ev => {
         ev.preventDefault()
         console.log(ev)
-
-        // this is used for manually insert the date
-
-        // const user = { id : 105, uname : 'pooja', email : 'pooja@gmail', password : 'pooja@123' }
 
         // this is used for insert the data manully dynamic 
         const formData = new FormData(ev.target)

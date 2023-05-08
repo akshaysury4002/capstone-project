@@ -50,24 +50,80 @@
               </div>
             </div>
 
-            
-              <table class="table table-striped" aria-describedby="mydesc">
-              
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Vahicle name</th>
-                    <th scope="col">Booking From</th>
-                    <th scope="col">Destination</th>
-                    <th scope="col">Date</th>
-                    <th scope="col">Action</th>
-                    
-                  </tr>
-                </thead>
-                <tbody id="tableBooking">
+            <div style="display: flex;">
 
-                </tbody>
-              </table>
+              <div class="container" style=" width: 300px;margin-left: -10px;margin-right: 10px;margin-top: 10px;
+              height: 530px;
+              background: linear-gradient();
+              border: 3px solid black;
+              border-radius: 10px;">
+  
+                  <form class="row" action="filter-for-admin.html" style="margin-top: 20px;">
+  
+                      <div class="mb-3">
+                        <label for="validationDefault01" class="form-label">Filter by boarding point</label>
+                        <div class="input-group">
+                          <input type="text" class="form-control" id="txtbookingFrom" placeholder="stating point of journey" name="bookingFrom" required>
+                        </div>
+                      </div>
+                  
+                      <div class="col" style="text-align: end; padding-right: 200px;">
+                        <input type="submit" value="filter by Picking" class="btn btn-success"style=" width: 160px;height: 40px;font-family: sans-serif;">
+                      </div>
+                  
+                    </form>
+                  
+                    <form class="row" action="filter-for-admin.html" style="margin-top: 40px;">
+                      <div class="mb-3">
+                        <label for="validationDefault01" class="form-label">Filter by Destination</label>
+                        <div class="input-group">
+                          <input type="text" class="form-control" id="txtbookingDestination" placeholder="Enter your Destination" name="bookingDestination" required>
+                        </div>
+                      </div>
+                  
+                      <div class="col" style="text-align: end; padding-right: 200px;">
+                        <input type="submit" value="filter by Destination" class="btn btn-success"style="width: 160px;height: 40px;font-family: sans-serif;">
+                      </div>
+                  
+                    </form>
+  
+                    <form class="row" action="filter-for-admin.html" style="margin-top: 40px;">
+                      <div class="mb-3">
+                        <label for="validationDefault01" class="form-label">Filter by Date</label>
+                        <div class="input-group">
+                          <input type="date" class="form-control" id="txtDate" placeholder="Enter date" name="date" required>
+                        </div>
+                      </div>
+                  
+                      <div class="col" style="text-align: end; padding-right: 200px;">
+                        <input type="submit" value="filter by date" class="btn btn-success"style="width: 160px;height: 40px;font-family: sans-serif;">
+                      </div>
+                  
+                    </form>
+  
+              </div>
+  
+              <div style="width: 100%;">
+                  <table class="table table-striped" aria-describedby="mydesc">
+            
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Vahicle name</th>
+                      <th scope="col">Booking From</th>
+                      <th scope="col">Destination</th>
+                      <th scope="col">Date</th>
+                      <th scope="col">Action</th>
+                      
+                    </tr>
+                  </thead>
+                  <tbody id="tableBooking">
+      
+                  </tbody>
+                </table>
+              </div>
+          
+          </div> 
         
             </div>
           </div>

@@ -38,10 +38,6 @@ function setupForm()
         ev.preventDefault()
         console.log(ev)
 
-        // this is used for manually insert the date
-
-        // const user = { id : 105, uname : 'pooja', email : 'pooja@gmail', password : 'pooja@123' }
-
         // this is used for insert the data manully dynamic 
         const formData = new FormData(ev.target)
 

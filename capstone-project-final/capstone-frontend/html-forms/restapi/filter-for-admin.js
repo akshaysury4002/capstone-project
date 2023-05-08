@@ -1,9 +1,4 @@
 
-function logOut() {
-    localStorage.setItem("userId", null)
-    window.location.href = "../html-forms/login-ac.html"
-}
-
 function apiGetBookingDetails(table) {
 
     const queryString = window.location.search;
@@ -59,20 +54,6 @@ function apiGetBookingDetails(table) {
 
 
     }
-    else
-    {
-        axios.get(`http://localhost:8080/booking/filterByFDT/${bookingFrom}/${bookingDestination}/${date}`)
-            .then(res => {
-                   const { data } = res
-                   console.log(data)  
-                   const { sts, msg, bd } = data
-
-                 propulateActualData(table, bd)
-            })
-        .catch(err => console.log(err))
-
-
-    }
 
         
 }
@@ -90,7 +71,8 @@ function propulateActualData(table, bookings) {
 
         const { bookingId, bookingVname, bookingFrom, bookingDestination,date } = booking
 
-        const viewPageUrl = `./view-more-user.html?bookingId=${bookingId}`
+        const updatePageUrl = `./update-booking-slot.html?bookingId=${bookingId}`
+        const viewPageUrl = `./view-more-booking.html?bookingId=${bookingId}`
 
 
         const row = table.insertRow()
@@ -101,33 +83,35 @@ function propulateActualData(table, bookings) {
         row.insertCell(4).innerHTML = date
         row.insertCell(5).innerHTML = `
         <a href='${viewPageUrl}'>View</a> 
-        <a class='ms-2' href='#' onclick='confirmBooking(${bookingId})'>Comfirm</a>`
+        <a class='ms-2' href='${updatePageUrl}'>Update</a> 
+        <a class='ms-2' href='#' onclick='showConfirmDeleteModal(${bookingId})'>Delete</a>`
     } 
     }
 
 setupTable()
 
 
-function confirmBooking(bookingId) {
-    const userId = localStorage.getItem("userId");
-
-    console.log(userId)
-    console.log(bookingId)
-
-    const headers = {
-        'content-type': 'application/json'
-    }
-    axios.post(`http://localhost:8080/user/${userId}/userbookings/${bookingId}`, { headers })
-          
-        .then(res => {
-            showSuccessModalEventBook()
-        }).catch(err => console.log(err))
-}
-
-
-
-function showSuccessModalEventBook() {
-    const myModalEl = document.getElementById('successModalbooking');
+function showConfirmDeleteModal(bookingId) {
+    console.log('clicked ' + bookingId)
+    const myModalEl = document.getElementById('deleteModal');
     const modal = new bootstrap.Modal(myModalEl)
     modal.show()
+
+    const btDl = document.getElementById('btDl')
+    btDl.onclick = () => {
+        apiCallDeleteBooking(bookingId, modal)
+        
+        window.location.reload()
+        
+    }
+}
+
+function apiCallDeleteBooking(bookingId, modal) {
+    const url = `http://localhost:8080/booking/delete/${bookingId}`
+
+    axios.delete(url)
+        .then(res => res.data) // you converted complete response in to our business reponse
+        // .then( data => console.log(data.msg) ) // this line can be written in destructured form as below
+        .then( ({ sts, msg, bd }) =>  modal.hide())
+        .catch(console.log)
 }
