@@ -58,6 +58,7 @@ function apiFetchAllBookings(table) {
 }
 
 function apiCallDeleteBooking(bookingId, modal) {
+    
     const url = `http://localhost:8080/booking/delete/${bookingId}`
 
     axios.delete(url)
