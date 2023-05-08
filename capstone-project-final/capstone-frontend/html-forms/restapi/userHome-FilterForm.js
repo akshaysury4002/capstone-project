@@ -35,15 +35,26 @@ function propulateActualData(table, bookings) {
 
         const viewPageUrl = `./view-more-user.html?bookingId=${bookingId}`
 
-        const row = table.insertRow()
-        row.insertCell(0).innerHTML = bookingId
-        row.insertCell(1).innerHTML = bookingVname
-        row.insertCell(2).innerHTML = bookingFrom
-        row.insertCell(3).innerHTML = bookingDestination
-        row.insertCell(4).innerHTML = date
-        row.insertCell(5).innerHTML = `
-        <a href='${viewPageUrl}'>View</a> 
-        <a class='ms-2' href='#' onclick='confirmBooking(${bookingId})'>Comfirm</a>`
+        const CurrentDate = new Date();
+
+        const date1 = new Date(booking.date);
+
+        if(date1>=CurrentDate)
+        {
+
+            const row = table.insertRow()
+            row.insertCell(0).innerHTML = bookingId
+            row.insertCell(1).innerHTML = bookingVname
+            row.insertCell(2).innerHTML = bookingFrom
+            row.insertCell(3).innerHTML = bookingDestination
+            row.insertCell(4).innerHTML = date
+            row.insertCell(5).innerHTML = `
+            <a href='${viewPageUrl}'>View</a> 
+            <a class='ms-2' href='#' onclick='confirmBooking(${bookingId})'>Comfirm</a>`
+
+
+        }
+
     }
 }
 

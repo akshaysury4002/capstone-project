@@ -19,8 +19,7 @@
 </head>
 <body>
   <div>
-    <nav class="
-    navbar-dark" style="background-color: black;">
+    <nav class=" navbar-dark" style="background-color: black;">
         <header class="d-flex justify-content-center py-2 mb-4 border-bottom">
             <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
               <svg class="bi me-2" width="10" height="32"><use xlink:href="#bootstrap"></use></svg>
@@ -42,12 +41,8 @@
         <div class="container mt-3">
             <div class="row bg-primary text-white mt-2 ">
               <div class="col">
-                <h2 class="p-2 ">My bookings</h2>
+                <h2 class="p-2 ">My booking History</h2>
               </div>
-              <div class="col" style="text-align: end; padding-left: 600px; margin-top: 8px;">
-                <button type="button" class="btn btn-success" onclick="window.location='./myBookingHistory.html';" style="height: 50px; width: 150px;" data-bs-dismiss="modal">Booking history</a></button>
-              </div>
-
               <div class="col" style="text-align: end; margin-top: 8px;">
                 <button type="button" class="btn btn-success" onclick="window.location='./userHomePage.html';" style="height: 50px; width: 150px;" data-bs-dismiss="modal">Back</a></button>
               </div>
@@ -70,7 +65,7 @@
                     <th scope="col">Status</th> 
                   </tr>
                 </thead>
-                <tbody id="allUserBooking">
+                <tbody id="UserBookingHistory">
 
                 </tbody>
               </table>
@@ -78,26 +73,8 @@
             </div>
           </div>
     </section>
-
-    <div class="modal fade" id="successModalbooking" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-          <div class="modal-content">
-              <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Success</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                  Booking confirmed
-              </div>
-              <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" onclick="window.location='./userHomePage.html'" data-bs-dismiss="modal">Close</button>
-              </div>
-          </div>
-      </div>
-      
-
 </div>
 
-<script src="./restapi/view-all-user-bookings.js"></script>
+<script src="./restapi/User-bookingHistory.js"></script>
 </body>
 </html>

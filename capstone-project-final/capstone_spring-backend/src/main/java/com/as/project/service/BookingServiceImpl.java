@@ -99,5 +99,4 @@ public class BookingServiceImpl implements BookingsService {
         .collect(Collectors.toList());
     }
 
-
 }

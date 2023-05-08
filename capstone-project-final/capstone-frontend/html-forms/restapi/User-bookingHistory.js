@@ -21,7 +21,7 @@ function apiFetchAllBookings(table) {
 
 
 function setupTable() {
-    const table = document.getElementById('allUserBooking')
+    const table = document.getElementById('UserBookingHistory')
 
     apiFetchAllBookings(table)
 }
@@ -36,7 +36,7 @@ function propulateActualData(table, bd) {
 
         const date = new Date(booking.date);
 
-        if(date>=CurrentDate)
+        if(date<CurrentDate)
         {
 
         const row = table.insertRow()
@@ -49,7 +49,7 @@ function propulateActualData(table, bd) {
         row.insertCell(6).innerHTML = booking.typeVahi
         row.insertCell(7).innerHTML = booking.ttimeTAke
         row.insertCell(8).innerHTML = booking.price
-        row.insertCell(9).innerHTML = "confirmed"
+        row.insertCell(9).innerHTML = "completed"
 
 
         }
