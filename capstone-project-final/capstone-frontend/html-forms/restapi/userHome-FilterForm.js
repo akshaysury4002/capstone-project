@@ -20,9 +20,11 @@ function handleSubmit(){
 
 
 function setupTable() {
-    const table = document.getElementById('tableUser')
 
-    apiFetchAllBookings(table)
+        const table = document.getElementById('tableUser')
+
+        apiFetchAllBookings(table)
+   
 }
 
 setupTable()
@@ -34,6 +36,8 @@ function propulateActualData(table, bookings) {
         const { bookingId, bookingVname, bookingFrom, bookingDestination,date } = booking
 
         const viewPageUrl = `./view-more-user.html?bookingId=${bookingId}`
+
+        const userId = localStorage.getItem("userId");
 
         const CurrentDate = new Date();
 
