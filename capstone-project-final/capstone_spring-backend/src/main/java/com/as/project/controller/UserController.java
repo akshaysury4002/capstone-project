@@ -168,5 +168,28 @@ public class UserController {
         return ResponseEntity.ok().body(service.getAllBookings(userId));
     }
 
+
+    @GetMapping(value = "/getcurrentbookings/{userId}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<AppResponse<List<UserBookingDto>>> getCurrentBookings(@PathVariable Long userId) {
+        List<UserBookingDto> sts=service.getCurrentBookings(userId);
+        AppResponse<List<UserBookingDto>> response=AppResponse.<List<UserBookingDto>>builder()
+                    .sts("success")
+                    .msg("All current bookings")
+                    .bd(sts)
+                    .build();
+              return ResponseEntity.ok().body(response);
+    }
+
+    @GetMapping(value = "/getbookinghistory/{userId}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<AppResponse<List<UserBookingDto>>> getBookingHistory(@PathVariable Long userId) {
+        List<UserBookingDto> sts=service.getBookingHistory(userId);
+        AppResponse<List<UserBookingDto>> response=AppResponse.<List<UserBookingDto>>builder()
+                    .sts("success")
+                    .msg("All bookings history")
+                    .bd(sts)
+                    .build();
+              return ResponseEntity.ok().body(response);
+    }
+
     
 }

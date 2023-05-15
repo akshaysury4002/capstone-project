@@ -1,21 +1,18 @@
 
 
-function apiFetchAllBookings(table) {
-
+function apiFetchAllbookings(table) {
     const userId = localStorage.getItem("userId");
-
     console.log(userId)
-
-    const url =`http://localhost:8080/user/getuserbookings/${userId}`
+    const url = `http://localhost:8080/user/getbookinghistory/${userId}`
     axios.get(url)
         .then(res => {
             const { data } = res
-            
-
-            propulateActualData(table, data)
+            console.log(data)  
+            const { sts, msg, bd } = data
+            console.log(bd)
+            propulateActualData(table, bd)
         })
         .catch(err => console.log(err))
-        
 }
 
 
@@ -23,7 +20,7 @@ function apiFetchAllBookings(table) {
 function setupTable() {
     const table = document.getElementById('UserBookingHistory')
 
-    apiFetchAllBookings(table)
+    apiFetchAllbookings(table)
 }
 
 setupTable()
@@ -31,13 +28,6 @@ setupTable()
 function propulateActualData(table, bd) {
 
     for(const booking of bd) {
-
-        const CurrentDate = new Date();
-
-        const date = new Date(booking.date);
-
-        if(date<CurrentDate)
-        {
 
         const row = table.insertRow()
         row.insertCell(0).innerHTML = booking.bookingId
@@ -50,9 +40,6 @@ function propulateActualData(table, bd) {
         row.insertCell(7).innerHTML = booking.ttimeTAke
         row.insertCell(8).innerHTML = booking.price
         row.insertCell(9).innerHTML = "completed"
-
-
-        }
 
     }
 }

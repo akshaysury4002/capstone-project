@@ -1,6 +1,7 @@
 package com.as.project.service;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -9,9 +10,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.as.project.domain.Bookings;
+import com.as.project.domain.User;
 import com.as.project.dto.BookingsDto;
+import com.as.project.dto.UserBookingDto;
 import com.as.project.exception.BookingNotFoundException;
 import com.as.project.repository.BookingsRepository;
+import com.as.project.repository.UserRepository;
 import com.as.project.util.BookingsMapper;
 
 import lombok.AllArgsConstructor;
@@ -22,6 +26,7 @@ import lombok.AllArgsConstructor;
 public class BookingServiceImpl implements BookingsService {
 
     private final BookingsRepository repository;
+    private final UserRepository repo;
     private final BookingsMapper mapper;
 
     @Override
@@ -98,5 +103,6 @@ public class BookingServiceImpl implements BookingsService {
         .map(mapper::toDto)
         .collect(Collectors.toList());
     }
+
 
 }

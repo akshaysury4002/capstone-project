@@ -38,9 +38,9 @@ GET http://localhost:8080/booking/filterByDestination/rar
 
 ### get by From and Destination and date
 
-GET http://localhost:8080/booking/filterByFDT/pune/kolkatta/2023-05-06
+GET http://localhost:8080/booking/filterByFDT/pune/kolkatta/2023-05-25
 
 
 ### get by bookingfrom
 
-GET http://localhost:8080/booking/filterByDate/2023-05-24
+GET http://localhost:8080/booking/filterByDate/2023-05-25

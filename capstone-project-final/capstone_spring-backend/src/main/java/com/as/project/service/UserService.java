@@ -28,5 +28,9 @@ public interface UserService {
 
     List<UserBookingDto> getAllBookings(Long userId);
 
+    List<UserBookingDto> getCurrentBookings(Long userId);
+
+    List<UserBookingDto> getBookingHistory(Long userId);
+    
 
 }

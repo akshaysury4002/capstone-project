@@ -18,6 +18,8 @@ public class UserBookingDto {
     
     private long id;
 
+    private String uname;
+
     private long bookingId;
 
     private String bookingVname;

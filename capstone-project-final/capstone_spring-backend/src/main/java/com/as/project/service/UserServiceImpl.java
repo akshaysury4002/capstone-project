@@ -1,5 +1,6 @@
 package com.as.project.service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -131,6 +132,49 @@ public class UserServiceImpl implements UserService {
 
         return collect;
     }
-   
+
+    @Override
+    public List<UserBookingDto> getCurrentBookings(Long userId) {
+        User user = repository.findById(userId)
+                .orElseThrow(() -> new UserNotFoundException("No User found for " + userId + " ID"));
+
+        if (user.getRole().equals("admin"))
+            throw new InvalidRoleException("No bookings for Admin");
+
+            LocalDate currentDate = LocalDate.now();
+
+        List<UserBookingDto> collect = user.getBookings().stream()
+                                         .filter(booking -> booking.getDate().isAfter(currentDate))
+                                         .map(booking -> dynamicMapper.convertor(booking, new UserBookingDto()))
+                                         .collect(Collectors.toList());
+                
+        if (collect.isEmpty())
+            throw new BookingNotFoundException("No bookings found book one.");
+
+        return collect;
+    }
+
+    @Override
+    public List<UserBookingDto> getBookingHistory(Long userId) {
+
+        User user = repository.findById(userId)
+                .orElseThrow(() -> new UserNotFoundException("No User found for " + userId + " ID"));
+
+        if (user.getRole().equals("admin"))
+            throw new InvalidRoleException("No bookings for Admin");
+
+            LocalDate currentDate = LocalDate.now();
+
+        List<UserBookingDto> collect = user.getBookings().stream()
+                                         .filter(booking -> booking.getDate().isBefore(currentDate))
+                                         .map(booking -> dynamicMapper.convertor(booking, new UserBookingDto()))
+                                         .collect(Collectors.toList());
+                
+        if (collect.isEmpty())
+            throw new BookingNotFoundException("No bookings found book one.");
+
+        return collect;
+    }
+
 
 }
