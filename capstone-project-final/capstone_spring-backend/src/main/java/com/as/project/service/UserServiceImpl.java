@@ -1,6 +1,7 @@
 package com.as.project.service;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -10,16 +11,20 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.as.project.domain.Bookings;
+import com.as.project.domain.Feedback;
 import com.as.project.domain.User;
-
+import com.as.project.dto.AdminUserBookDto;
+import com.as.project.dto.FeedbackDto;
 import com.as.project.dto.LoginDto;
 import com.as.project.dto.UserBookingDto;
 import com.as.project.dto.UserDto;
 import com.as.project.exception.BookingNotFoundException;
 import com.as.project.exception.DuplicateEventException;
+import com.as.project.exception.FeedbackNotFoundException;
 import com.as.project.exception.InvalidRoleException;
 import com.as.project.exception.UserNotFoundException;
 import com.as.project.repository.BookingsRepository;
+import com.as.project.repository.FeedbackRepository;
 import com.as.project.repository.UserRepository;
 import com.as.project.util.DynamicMapper;
 import com.as.project.util.UserMapper;
@@ -35,6 +40,7 @@ public class UserServiceImpl implements UserService {
     private final UserMapper mapper;
     private final DynamicMapper dynamicMapper;
     private final BookingsRepository bookingRepo;
+    private final FeedbackRepository feedbackRepository;
 
     @Override
     public Integer createNewUser(UserDto dto) {
@@ -69,20 +75,6 @@ public class UserServiceImpl implements UserService {
     public UserDto fetchUserDetails(Long id) throws UserNotFoundException {
         Optional<User> op = repository.findById(id);
         return mapper.toDto(op.orElseThrow(() -> new UserNotFoundException("Invoice " + id + " Not Found")));
-    }
-
-    @Override
-    public String loginUser(LoginDto dto) {
-    User user=dynamicMapper.toDomain(dto);
-    List<User> users = repository.findAll();
-    for(User users2:users){
-      if(user.getEmail().equals(users2.getEmail())&&user.getPassword().equals(users2.getPassword())){
-       
-            return users2.getRole();
-         }
-      }
-    return "invalid user";
-    
     }
 
     @Override
@@ -176,5 +168,58 @@ public class UserServiceImpl implements UserService {
         return collect;
     }
 
+
+    public List<AdminUserBookDto> getAllUserBookings() {
+        List<AdminUserBookDto> adminUserBookDtos = new ArrayList<>();
+        List<User> users = repository.findAll();
+        for (User user : users) {
+            for (Bookings bookingSlot : user.getBookings()) {
+                AdminUserBookDto adminUserBookDto = new AdminUserBookDto();
+                adminUserBookDto.setUserId(user.getId());
+                adminUserBookDto.setUname(user.getUname());
+                adminUserBookDto.setBookingFrom(bookingSlot.getBookingFrom());
+                adminUserBookDto.setBookingDestination(bookingSlot.getBookingDestination());
+                adminUserBookDto.setDate(bookingSlot.getDate());
+                adminUserBookDto.setTime(bookingSlot.getTime());
+                adminUserBookDto.setPrice(bookingSlot.getPrice());
+                adminUserBookDtos.add(adminUserBookDto);
+            }
+        }
+        return adminUserBookDtos;
+    }
+
+
+
+
+
+    @Override
+    public Integer createFeedback(Long id, FeedbackDto dto) {
+        User user = repository.findById(id)
+                .orElseThrow(() -> new UserNotFoundException("User not Found for " + id + " id"));
+
+        Feedback feedback = dynamicMapper.convertor(dto, new Feedback());
+        feedback.setUser(user);
+        feedbackRepository.save(feedback);
+        return 1;
+    }
+
+    @Override
+    public List<FeedbackDto> listAllFeedbacks() {
+        List<Feedback> feedbackList = feedbackRepository.findAll();
+        List<FeedbackDto> feedbackDtoList = new ArrayList<>();
+    
+        for (Feedback feedback : feedbackList) {
+            FeedbackDto feedbackDto = new FeedbackDto();
+            BeanUtils.copyProperties(feedback, feedbackDto);
+            feedbackDtoList.add(feedbackDto);
+            if(feedbackDtoList.isEmpty()){
+                throw new FeedbackNotFoundException("no feedback present ");
+            }
+        }
+    
+        return feedbackDtoList;
+    }
+
+    
 
 }

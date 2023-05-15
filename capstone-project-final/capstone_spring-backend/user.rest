@@ -26,32 +26,19 @@ POST http://localhost:8080/user/login HTTP/1.1
 content-type: application/json
 
 {
-"email" : "shay@gmail.com", "password" : "Pass@123"
-}
-
-### login 
-POST http://localhost:8080/user/loginn HTTP/1.1 
-content-type: application/json
-
-{
 "email" : "akshay@gmail.com", "password" : "Pass@123"
 }
 
 
-### map user with booking
 
-
-### Book Event by user id and event id 
-POST http://localhost:8080/user/5/userbookings/2 HTTP/1.1 
+### Book by user id and event id 
+POST http://localhost:8080/user/88/userbookings/18 HTTP/1.1 
 Content-Type: application/json
 
 {
     "userId" : 3,"bookingVname" : "truck", "bookingFrom" : "pune", "bookingDestination" : "kolkatta","date": "2023-05-06", "typeVahi":"ac", "ttimeTAke": 90 ,"price" : 70000 ,"time":"23:12:00"
 }
 
-### list all user bookings
-
-GET http://localhost:8080/user/getuserbookings/50
 
 ### list all user current booking
 
@@ -62,8 +49,24 @@ GET http://localhost:8080/user/getcurrentbookings/50
 GET http://localhost:8080/user/getbookinghistory/14
 
 
+### Get all userBooking
+
+GET http://localhost:8080/user/alluserbookings
 
 
+### Create New user feedback
 
+POST http://localhost:8080/user/1/feedback HTTP/1.1 
+content-type: application/json
+
+{
+
+"comment": "helloo itis nme", "rating": 10.0
+}
+
+
+### Get All feedbacks
+
+GET http://localhost:8080/user/feedback
 
     

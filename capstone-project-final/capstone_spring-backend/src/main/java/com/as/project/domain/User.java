@@ -3,6 +3,7 @@ package com.as.project.domain;
 
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -15,6 +16,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -55,6 +57,9 @@ public class User {
         inverseJoinColumns = @JoinColumn(name = "booking_id")
     )
     private List<Bookings> bookings;
+
+    @OneToMany(mappedBy = "user", cascade=CascadeType.ALL)
+    private List<Feedback> feedback=new ArrayList<>();
 
     
 }

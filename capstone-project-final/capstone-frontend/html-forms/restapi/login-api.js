@@ -39,7 +39,7 @@ function apiLogin(user, form) {
         'content-type': 'application/json'
     }
 
-    axios.post('http://localhost:8080/user/loginn', user, { headers })
+    axios.post('http://localhost:8080/user/login', user, { headers })
         .then(httpResponse => {
             form.reset()
             console.log(httpResponse)

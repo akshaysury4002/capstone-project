@@ -17,8 +17,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
+import com.as.project.dto.AdminUserBookDto;
 import com.as.project.dto.AppResponse;
+import com.as.project.dto.FeedbackDto;
 import com.as.project.dto.LoginDto;
 import com.as.project.dto.UserBookingDto;
 import com.as.project.dto.UserDto;
@@ -53,20 +54,6 @@ public class UserController {
 
     }
 
-
-    //login user
-
-    @PostMapping(value = "/login", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<AppResponse<String>> loginUser(@Valid @RequestBody LoginDto dto) {
-         String sts = service.loginUser(dto);
-        
-        final AppResponse<String> response = AppResponse.<String>builder()
-                                                    .sts("success")
-                                                    .msg("login Successfully")
-                                                    .bd(sts)
-                                                    .build();
-        return ResponseEntity.status(HttpStatus.CREATED).body(response);
-    }
 
     //get all user
 
@@ -137,7 +124,7 @@ public class UserController {
     //login
 
     @CrossOrigin
-    @PostMapping(value = "/loginn", produces = MediaType.APPLICATION_JSON_VALUE,consumes = MediaType.APPLICATION_JSON_VALUE )
+    @PostMapping(value = "/login", produces = MediaType.APPLICATION_JSON_VALUE,consumes = MediaType.APPLICATION_JSON_VALUE )
     public ResponseEntity<AppResponse<UserDto>> login(@Valid @RequestBody LoginDto dto) {
         final UserDto resDto = service.login(dto);
 
@@ -190,6 +177,45 @@ public class UserController {
                     .build();
               return ResponseEntity.ok().body(response);
     }
+
+
+    @GetMapping(value = "/alluserbookings", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<AppResponse<List<AdminUserBookDto>>> getAllUserBookings() {
+        List<AdminUserBookDto> sts = service.getAllUserBookings();
+        AppResponse<List<AdminUserBookDto>> response = AppResponse.<List<AdminUserBookDto>>builder()
+        .sts("success")
+        .msg("All User Bookings")
+        .bd(sts)
+        .build();
+          return ResponseEntity.ok().body(response);
+    }
+
+    
+
+
+    @PostMapping(value = "/{userId}/feedback", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<AppResponse<Integer>> createFeedback(@Valid @PathVariable Long userId, @RequestBody FeedbackDto dto) {
+        Integer sts = service.createFeedback(userId,dto);
+        AppResponse<Integer> response = AppResponse.<Integer>builder()
+                .sts("success")
+                .msg("feedback submitted.")
+                .bd(sts)
+                .build();
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
+    }
+
+
+    @GetMapping(value = "/feedback", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<AppResponse<List<FeedbackDto>>> getAllFeedbacks() {
+        List<FeedbackDto> sts = service.listAllFeedbacks();
+        AppResponse<List<FeedbackDto>> response = AppResponse.<List<FeedbackDto>>builder()
+                .sts("success")
+                .msg("All Feedbacks")
+                .bd(sts)
+                .build();
+        return ResponseEntity.ok().body(response);
+    }
+
 
     
 }
