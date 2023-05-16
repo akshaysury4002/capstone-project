@@ -1,0 +1,44 @@
+<div class="container mt-5">
+		
+    <h2 class="text-center mb-4">Feedback Form</h2>
+    
+    
+    <form  id="feedback">
+        <div class="col">
+            <div class="alert alert-danger" role="alert" id="errMsg">
+            </div>
+        </div>
+        <div class="mb-3 text-center">
+            <label for="comment" class="form-label">Comment:</label>
+            <textarea class="form-control" id="comment" rows="3" name="comment"></textarea>
+        </div>
+        </div>
+        <div class="mb-3">
+            <label for="rating" class="form-label">Rating (out of 10):</label>
+            <input type="number" class="form-range" style="color: white;" min="0" max="10" step="1" id="rating" name="rating">
+        </div>
+        <button type="submit" class="btn btn-dark">Submit Feedback</button>
+        <div >
+            <a href="../dashboardhtml/allfeedbacks.html" class="btn btn-dark ms-auto btn-feedback ">Show all feedbacks</a>
+          </div>
+        <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content" style="color: black;">
+                    <div class="modal-header">
+                        <h5 class="modal-title" class="text-black" id="exampleModalLabel" style="color: black;">
+                            Success</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="text-black text-lg" style="color: black;" >Thanks for your feedback</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="reloadPage()" >Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>

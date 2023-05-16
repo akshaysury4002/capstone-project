@@ -69,6 +69,8 @@ function apiFetchAllBookings(table) {
             console.log(data)  
             const {  bd } = data
 
+            console.log(bd)
+
             propulateActualData(table, bd)
         })
         .catch(err => console.log(err))

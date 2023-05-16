@@ -79,3 +79,10 @@ function showSuccessModal() {
     const modal = new bootstrap.Modal(myModalEl)
     modal.show()
 }
+
+function goBack() {
+    window.history.back();
+}
+function reloadPage() {
+    location.reload();
+  }
