@@ -4,7 +4,6 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
-import com.as.project.domain.User;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
