@@ -108,7 +108,7 @@ public class UserController {
 
 
 
-    @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE )
+    @GetMapping(value = "/userdetails/{id}", produces = MediaType.APPLICATION_JSON_VALUE )
     public ResponseEntity<AppResponse<UserDto>> getUserById(@PathVariable Long id) {
 
         final UserDto dto = service.fetchUserDetails(id);

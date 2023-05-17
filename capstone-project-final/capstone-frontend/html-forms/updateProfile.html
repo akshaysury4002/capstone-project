@@ -41,18 +41,18 @@
 
   <section>
 
-    <form action="" id="MyProfile">
+    <form action="" id="updateProfile">
 
         <div style="display: flex;">
             <div class="container" style=" width: 550px;margin-top: 10px;
-                height: 600px;
+                height: 650px;
                 background: linear-gradient();
                 border: 3px solid black;
                 border-radius: 10px;">
     
                 <div style="text-align: center; ">
                     
-                    <img src="./photos/Screenshot 2023-04-21 112117.png" alt="Sky" style="width: 200px; height: 200px;">
+                    <img src="./photos/Screenshot 2023-04-21 112117.png" alt="Sky" style="width: 150px; height: 150px;">
                   </div>
     
                   <div style="margin-bottom: 30px; text-align: center;font-weight:500; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
@@ -62,27 +62,43 @@
                 <div class="mb-3" style="width: 300px;margin-left: auto;margin-right: auto;">
                           <label for="validationDefault01" class="form-label">Name</label>
                           <div class="input-group">
-                            <input type="text" class="form-control"  id="txtName"name="uname" readonly>
+                            <input type="text" class="form-control"  id="txtName"name="uname"  required>
                           </div>
                 </div>
     
                 <div class="mb-3" style="width: 300px;margin-left: auto;margin-right: auto;">
                     <label for="validationDefault01" class="form-label">Email Id</label>
                     <div class="input-group">
-                      <input type="email" class="form-control" id="txtEmail"name="email" readonly>
+                      <input type="email" class="form-control" id="txtEmail"name="email" required>
                     </div>
                 </div>
     
                 <div class="mb-3" style="width: 300px;margin-left: auto;margin-right: auto; ">
                    <label for="validationDefault01" class="form-label">Role</label>
                    <div class="input-group">
-                     <input type="text" class="form-control" id="txtRole"name="role" readonly>
+                     <input type="text" class="form-control" id="txtRole"name="role"  readonly>
                    </div>
                 </div>
 
-                <div class="col" style="text-align: center;">
-                  <button type="button" class="btn btn-secondary" onclick="window.location='./updateProfile.html';"  style="width: 190px;height: 50px;font-size: 15px;font-weight: 600;background : #F2DF3A;color: #0078AA;font-family: sans-serif;" data-bs-dismiss="modal">UPDATE PROFILE</button>
-              </div>
+                <div class="mb-3" style="width: 300px;margin-left: auto;margin-right: auto; ">
+                    <label for="validationDefault01" class="form-label">Password</label>
+                    <div class="input-group">
+                      <input type="password" class="form-control" id="txtPassword"name="password"  readonly>
+                    </div>
+                 </div>
+
+
+                <div class="row mb-5" >
+
+                    <div class="col" style="text-align: end;">
+                        <input type="submit" value="UPDATE" class="btn btn-success" style="width: 110px;height: 50px;font-size: 20px;font-weight: 600;background : #F2DF3A;color: #0078AA;font-family: sans-serif;">
+                    </div>
+          
+                    <div class="col">
+                        <button type="button" class="btn btn-secondary" onclick="window.location='./my-profile.html';"  style="width: 110px;height: 50px;font-size: 20px;font-weight: 600;background : #F2DF3A;color: #0078AA;font-family: sans-serif;" data-bs-dismiss="modal">CANCEL</button>
+                    </div>
+        
+                 </div>
     
             </div>
     
@@ -94,8 +110,28 @@
     
   </section>
 
+    <!-- --model-- -->
 
-<script src="./restapi/MyProfile.js"></script>
+
+    <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Success</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              user updated Successfully
+            </div>
+            <div class="modal-footer">
+              <button type="button" onclick="window.location='./my-profile.html';"  class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+<script src="./restapi/updateProfile.js"></script>
 
 </body>
 </html>
