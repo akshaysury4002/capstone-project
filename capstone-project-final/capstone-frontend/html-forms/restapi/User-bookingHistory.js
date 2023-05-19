@@ -1,7 +1,7 @@
 
 
 function apiFetchAllbookings(table) {
-    const userId = localStorage.getItem("userId");
+    const userId = sessionStorage.getItem("userId");
     console.log(userId)
     const url = `http://localhost:8080/user/getbookinghistory/${userId}`
     axios.get(url)

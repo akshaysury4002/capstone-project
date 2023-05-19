@@ -216,6 +216,18 @@ public class UserController {
         return ResponseEntity.ok().body(response);
     }
 
+    @DeleteMapping(value = "/{userId}/booking/{bookingId}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<AppResponse<Integer>> deleteUserBooking(@PathVariable Long userId,
+            @PathVariable Long bookingId) {
+        final Integer sts = service.deleteUserBooking(bookingId, userId);
+        final AppResponse<Integer> response = AppResponse.<Integer>builder()
+                .sts("success")
+                .msg("user booking Deleted Successfully")
+                .bd(sts)
+                .build();
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
+
+    }
 
     
 }

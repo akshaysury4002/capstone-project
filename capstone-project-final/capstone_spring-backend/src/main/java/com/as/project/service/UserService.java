@@ -25,7 +25,7 @@ public interface UserService {
 
     UserDto login(LoginDto dto) throws UserNotFoundException;
 
-    Integer bookReservation(Long userId,Long bookingsId);
+    Integer bookReservation(Long userId,Long bookingId);
 
     List<UserBookingDto> getAllBookings(Long userId);
 
@@ -38,6 +38,8 @@ public interface UserService {
     List<FeedbackDto> listAllFeedbacks();
 
     List<AdminUserBookDto> getAllUserBookings();
+
+    Integer deleteUserBooking(Long bookingId, Long userId);
     
 
 }

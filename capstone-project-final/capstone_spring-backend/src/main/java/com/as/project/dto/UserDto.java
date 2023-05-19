@@ -19,7 +19,7 @@ import lombok.ToString;
 @Setter
 public class UserDto 
 {
-    private long id;
+    private Long id;
 
     @NotEmpty(message = "Username cant be empty")
     @NotNull(message = "Username cant be null")

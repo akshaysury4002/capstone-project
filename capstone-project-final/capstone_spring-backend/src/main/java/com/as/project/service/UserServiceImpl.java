@@ -220,6 +220,20 @@ public class UserServiceImpl implements UserService {
         return feedbackDtoList;
     }
 
+    @Override
+    public Integer deleteUserBooking(Long bookingId, Long userId) {
+        Bookings bookingSlot = bookingRepo.findById(bookingId)
+        .orElseThrow(() -> new BookingNotFoundException("No user booking slot found"));
+         User user = bookingSlot.getUser().stream().filter(u -> u.getId().equals(userId)).findFirst()
+        .orElseThrow(() -> new UserNotFoundException("No user booking slot found"));
+
+      bookingSlot.getUser().remove(user);
+      user.getBookings().remove(bookingSlot);
+      bookingRepo.save(bookingSlot);
+      return 1;
+    }
+
+
     
 
 }

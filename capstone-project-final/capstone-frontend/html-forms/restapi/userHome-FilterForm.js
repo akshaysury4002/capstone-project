@@ -1,7 +1,7 @@
 
 
 function logOut() {
-    localStorage.setItem("userId", null)
+    sessionStorage.setItem("userId", null)
     window.location.href = "../html-forms/login-ac.html"
 }
 
@@ -37,7 +37,7 @@ function propulateActualData(table, bookings) {
 
         const viewPageUrl = `./view-more-user.html?bookingId=${bookingId}`
 
-        const userId = localStorage.getItem("userId");
+        const userId = sessionStorage.getItem("userId");
 
         const CurrentDate = new Date();
 
@@ -79,7 +79,7 @@ function apiFetchAllBookings(table) {
 
 
 function confirmBooking(bookingId) {
-    const userId = localStorage.getItem("userId");
+    const userId = sessionStorage.getItem("userId");
 
     console.log(userId)
     console.log(bookingId)

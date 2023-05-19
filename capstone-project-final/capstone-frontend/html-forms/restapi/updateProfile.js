@@ -2,7 +2,7 @@
 
 function apiGetBookingDetails() {
    
-    const id = localStorage.getItem("userId");
+    const id = sessionStorage.getItem("userId");
 
     axios.get(`http://localhost:8080/user/userdetails/${id}`)
         .then(httpReponse => httpReponse.data)
@@ -58,7 +58,7 @@ function setupForm() {
         const rawData = Object.fromEntries(formData.entries()) // you are converting form data to js object
         console.log(rawData)
 
-        const id = localStorage.getItem("userId");
+        const id = sessionStorage.getItem("userId");
 
         // if we need to update, we need to send id, so we creatd new object inclusive of id
         // const invoice = { 

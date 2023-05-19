@@ -28,7 +28,7 @@ public class Bookings {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "bookingId")
-    private long bookingId;
+    private Long bookingId;
 
     @Column(name = "vahicle_name")
     private String bookingVname;

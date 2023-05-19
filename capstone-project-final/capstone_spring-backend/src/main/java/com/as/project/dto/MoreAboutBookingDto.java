@@ -20,7 +20,7 @@ import lombok.ToString;
 @ToString
 public class MoreAboutBookingDto {
 
-    private long bookingId;
+    private Long bookingId;
    
     @NotEmpty(message = "bookingVname cant be empty")
     @NotNull(message = "bookingVname cant be null")

@@ -3,13 +3,6 @@
 function setupTable() {
     const table = document.getElementById('AllFeedback')
 
-    // const btnSearch = document.getElementById('btnSearch')
-    
-    // btnSearch.onclick = () =>   {
-
-    //     const api=apiFetchBooking(table, document.getElementById('txtUsername').value )
-    //     console.log(api)
-    // }
     
     apiFetchAllbookings(table)
 }

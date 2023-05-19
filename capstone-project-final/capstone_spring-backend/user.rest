@@ -17,6 +17,12 @@ content-type: application/json
 ### Get All user 
 GET http://localhost:8080/user/
 
+
+### Get detail by user id
+GET http://localhost:8080/user/userdetails/1
+
+
+
 ### Delete user By Id 
 DELETE http://localhost:8080/user/21
 
@@ -61,7 +67,7 @@ content-type: application/json
 
 {
 
-"comment": "helloo itis nme", "rating": 10.0
+"comment": "helloo itis nme","rating": 10.0
 }
 
 

@@ -16,11 +16,11 @@ import lombok.ToString;
 @ToString
 public class UserBookingDto {
     
-    private long id;
+    private Long id;
 
     private String uname;
 
-    private long bookingId;
+    private Long bookingId;
 
     private String bookingVname;
 

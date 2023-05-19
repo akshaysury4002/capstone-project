@@ -1,6 +1,6 @@
 
 function logOut() {
-    localStorage.setItem("userId", null)
+    sessionStorage.setItem("userId", null)
     window.location.href = "../html-forms/login-ac.html"
 }
 
@@ -109,7 +109,8 @@ setupTable()
 
 
 function confirmBooking(bookingId) {
-    const userId = localStorage.getItem("userId");
+    
+    const userId = sessionStorage.getItem("userId");
 
     console.log(userId)
     console.log(bookingId)

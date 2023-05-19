@@ -23,7 +23,7 @@ import lombok.ToString;
 @ToString
 public class BookingsDto {
 
-    private long bookingId;
+    private Long bookingId;
    
     @NotEmpty(message = "time cant be empty")
     @NotNull(message = "time cant be null")

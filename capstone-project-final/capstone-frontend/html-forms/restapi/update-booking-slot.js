@@ -8,7 +8,7 @@ const readIdQueryParam = () => {
 
 const validateForm = ({ price, ttimeTAke,date }) => {
 
-    var CurrentDate = new Date();
+    const CurrentDate = new Date();
     date = new Date(date);
 
     if (price <=0) return { msg: 'invalid price', sts: false}

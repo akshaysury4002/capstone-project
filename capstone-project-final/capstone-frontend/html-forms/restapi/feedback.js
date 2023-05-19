@@ -42,7 +42,7 @@ function apiFeedback(user, form) {
         'content-type': 'application/json'
     }
 
-    const userId = localStorage.getItem("userId");
+    const userId = sessionStorage.getItem("userId");
     console.log(userId)
     const url = `http://localhost:8080/user/${userId}/feedback`
     axios.post(url , user, { headers })

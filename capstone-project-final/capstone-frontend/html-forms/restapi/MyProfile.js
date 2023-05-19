@@ -1,7 +1,7 @@
 
 
 function apiGetBookingDetails() {
-    const userId = localStorage.getItem("userId");
+    const userId = sessionStorage.getItem("userId");
 
     axios.get(`http://localhost:8080/user/userdetails/${userId}`)
         .then(httpReponse => httpReponse.data)
