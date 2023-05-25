@@ -60,6 +60,11 @@ GET http://localhost:8080/user/getbookinghistory/14
 GET http://localhost:8080/user/alluserbookings
 
 
+### cancel Booking slot
+
+DELETE http://localhost:8080/user/8/booking/4
+
+
 ### Create New user feedback
 
 POST http://localhost:8080/user/1/feedback HTTP/1.1 
