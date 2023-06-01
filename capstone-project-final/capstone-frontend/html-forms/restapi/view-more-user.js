@@ -2,6 +2,7 @@
 
 function logOut() {
     sessionStorage.setItem("userId", null)
+    sessionStorage.setItem("role", null)
     window.location.href = "../html-forms/login-ac.html"
 }
 

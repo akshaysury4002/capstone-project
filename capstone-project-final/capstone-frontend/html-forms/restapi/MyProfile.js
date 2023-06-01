@@ -35,6 +35,19 @@ function populateForm(form, data) {
 
 }
 
+function back()
+{
+    const role = sessionStorage.getItem("role");
+    if(role=='admin')
+    {
+        window.location.href = "../html-forms/Admin-home.html"
+    }
+    else
+    {
+        window.location.href = "../html-forms/userHomePage.html"
+    }
+}
+
 
 
 apiGetBookingDetails()

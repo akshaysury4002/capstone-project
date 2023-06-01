@@ -1,3 +1,4 @@
+
 function setupTable() {
     const table = document.getElementById('tableBooking')
 
@@ -45,6 +46,11 @@ function showConfirmDeleteModal(bookingId) {
 }
 
 function apiFetchAllBookings(table) {
+
+    const userId = sessionStorage.getItem("userId");
+
+    if(userId!='null')
+    {
     axios.get('http://localhost:8080/booking/list')
         .then(res => {
             const { data } = res
@@ -54,6 +60,7 @@ function apiFetchAllBookings(table) {
             propulateActualData(table, bd)
         })
         .catch(err => console.log(err))
+    }
         
 }
 
@@ -69,6 +76,7 @@ function apiCallDeleteBooking(bookingId, modal) {
 }
 
 function logOut() {
-    localStorage.setItem("userId", null)
+    sessionStorage.setItem("userId", null)
+    sessionStorage.setItem("role", null)
     window.location.href = "../html-forms/login-ac.html"
 }

@@ -62,7 +62,13 @@ function setupTable() {
 
     const table = document.getElementById('tableFilter')
 
+    const userId = sessionStorage.getItem("userId");
+
+    if(userId!='null')
+    {
+
      apiGetBookingDetails(table)
+    }
 }
 
 function propulateActualData(table, bookings) {

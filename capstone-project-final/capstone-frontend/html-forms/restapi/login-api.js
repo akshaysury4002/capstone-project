@@ -50,6 +50,8 @@ function apiLogin(user, form) {
             const { role , id, uname} = data.bd
 
             sessionStorage.setItem("userId",id)
+            sessionStorage.setItem("role",role)
+            
             if(role == 'admin') window.location.href = '../html-forms/Admin-home.html'
             else  window.location.href = '../html-forms/userHomePage.html'
         } )

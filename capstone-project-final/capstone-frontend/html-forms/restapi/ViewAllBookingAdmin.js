@@ -9,7 +9,11 @@ function setupTable() {
     //     console.log(api)
     // }
     
+    const userId = sessionStorage.getItem("userId");
+    if(userId!='null')
+    {
     apiFetchAllbookings(table)
+    }
 }
 
  setupTable()

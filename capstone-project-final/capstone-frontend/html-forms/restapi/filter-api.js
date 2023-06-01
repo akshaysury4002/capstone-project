@@ -1,6 +1,7 @@
 
 function logOut() {
     sessionStorage.setItem("userId", null)
+    sessionStorage.setItem("role", null)
     window.location.href = "../html-forms/login-ac.html"
 }
 
@@ -92,6 +93,12 @@ function propulateActualData(table, bookings) {
 
         const viewPageUrl = `./view-more-user.html?bookingId=${bookingId}`
 
+        const CurrentDate = new Date();
+
+        const date1 = new Date(booking.date);
+
+        if(date1>=CurrentDate)
+        {
 
         const row = table.insertRow()
         row.insertCell(0).innerHTML = bookingId
@@ -102,6 +109,7 @@ function propulateActualData(table, bookings) {
         row.insertCell(5).innerHTML = `
         <a href='${viewPageUrl}'>View</a> 
         <a class='ms-2' href='#' onclick='confirmBooking(${bookingId})'>Comfirm</a>`
+        }
     } 
     }
 
