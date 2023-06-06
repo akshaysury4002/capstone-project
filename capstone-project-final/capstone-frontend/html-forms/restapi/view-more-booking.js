@@ -14,49 +14,64 @@ const readIdQueryParam = () => {
 
 console.log(readIdQueryParam())
 
-function apiGetBookingDetails(table) {
+function apiGetBookingDetails() {
     const bookingId = readIdQueryParam()
 
     axios.get(`http://localhost:8080/booking/getbookingbyid/${bookingId}`)
-            .then(res => {
-                   const { data } = res
-                   console.log(data)  
-                   const { sts, msg, bd } = data
-
-                 propulateActualData(table, bd)
-            })
-        .catch(err => console.log(err))
+    .then(httpReponse => httpReponse.data)
+    .then(data => populateForm(document.getElementById('MyProfile'), data.bd))
+    .catch(err => console.log(err))
 
         
 }
 
 function setupTable() {
-    const table = document.getElementById('tableViewMoreBooking')
 
-     apiGetBookingDetails(table)
+     apiGetBookingDetails()
 }
 
-function propulateActualData(table, bd) {
 
-    const updatePageUrl = `./update-booking-slot.html?bookingId=${bd.bookingId}`
+function populateForm(form, data) {
+        console.log(data)
+        const { elements } = form; // it will give all input elements 
+        console.log(elements)
+    
+        const entries = Object.entries(data) // it will give all [keys, values] of invoice json which is received from server
+        console.log(entries)
+    
+        for (const entry of entries) {
+            // here entry is an array of 2 elements, oth is key, first is value
+            console.log(entry)
+            // const key = entry[0]
+            // const value = entry[1]
+    
+            const [key, value] = entry
+            const inputField = elements.namedItem(key)
+            console.log(inputField)
+            if (inputField) inputField.value = value
+        }
 
-        const row = table.insertRow()
-        row.insertCell(0).innerHTML = bd.bookingId
-        row.insertCell(1).innerHTML = bd.bookingVname
-        row.insertCell(2).innerHTML = bd.bookingFrom
-        row.insertCell(3).innerHTML = bd.bookingDestination
-        row.insertCell(4).innerHTML = bd.date
-        row.insertCell(5).innerHTML = bd.time
-        row.insertCell(6).innerHTML = bd.typeVahi
-        row.insertCell(7).innerHTML = bd.ttimeTAke
-        row.insertCell(8).innerHTML = bd.price
-        row.insertCell(9).innerHTML = ` <a href='${updatePageUrl}'>Update</a>
-        <a class='ms-2' href='#' onclick='showConfirmDeleteModal(${bd.bookingId})'>Delete</a> ` 
-    }
+    
+ }
 
 setupTable()
 
-function showConfirmDeleteModal(bookingId) {
+
+function UpdatePageUrl()
+{
+    const bookingId = readIdQueryParam()
+
+    const updatePageUrl = `./update-booking-slot.html?bookingId=${bookingId}`
+    window.location.href = updatePageUrl
+
+
+}
+
+
+function showConfirmDeleteModal() {
+
+    const bookingId = readIdQueryParam()
+
     console.log('clicked ' + bookingId)
     const myModalEl = document.getElementById('deleteModal');
     const modal = new bootstrap.Modal(myModalEl)

@@ -49,27 +49,86 @@
               </div>
             </div>
 
-            
-              <table class="table table-striped" aria-describedby="mydesc">
-              
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Vahicle name</th>
-                    <th scope="col">Booking From</th>
-                    <th scope="col">Destination</th>
-                    <th scope="col">Date</th>
-                    <th scope="col">time</th>
-                    <th scope="col">Type</th>
-                    <th scope="col">Total Time for Journey</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Action</th> 
-                  </tr>
-                </thead>
-                <tbody id="tableViewMoreetalis">
 
-                </tbody>
-              </table>
+            <form action="" id="viewMore">
+            
+              <div style="display: flex;">
+                <div class="container" style=" width: 550px;margin-top: 10px;
+                                  height: 750px;
+                                  background: linear-gradient();
+                                  border: 3px solid black;
+                                  border-radius: 10px;">
+            
+            
+                  <div class="mb-3" style="width: 300px;margin-left: auto;margin-right: auto;">
+                    <label for="validationDefault01" class="form-label">Vahicle Name</label>
+                    <div class="input-group">
+                      <input type="text" class="form-control" id="txtName" name="bookingVname" readonly>
+                    </div>
+                  </div>
+            
+                  <div class="mb-3" style="width: 300px;margin-left: auto;margin-right: auto;">
+                    <label for="validationDefault01" class="form-label">Booking From</label>
+                    <div class="input-group">
+                      <input type="text" class="form-control" id="txtName" name="bookingFrom" readonly>
+                    </div>
+                  </div>
+            
+                  <div class="mb-3" style="width: 300px;margin-left: auto;margin-right: auto;">
+                    <label for="validationDefault01" class="form-label">Destination</label>
+                    <div class="input-group">
+                      <input type="text" class="form-control" id="txtName" name="bookingDestination" readonly>
+                    </div>
+                  </div>
+            
+                  <div class="mb-3" style="width: 300px;margin-left: auto;margin-right: auto;">
+                    <label for="validationDefault01" class="form-label">Date</label>
+                    <div class="input-group">
+                      <input type="date" class="form-control" id="txtName" name="date" readonly>
+                    </div>
+                  </div>
+            
+                  <div class="mb-3" style="width: 300px;margin-left: auto;margin-right: auto;">
+                    <label for="validationDefault01" class="form-label">Time</label>
+                    <div class="input-group">
+                      <input type="time" class="form-control" id="txtName" name="time" readonly>
+                    </div>
+                  </div>
+            
+                  <div class="mb-3" style="width: 300px;margin-left: auto;margin-right: auto;">
+                    <label for="validationDefault01" class="form-label">Type of Vahicle</label>
+                    <div class="input-group">
+                      <input type="text" class="form-control" id="txtName" name="typeVahi" readonly>
+                    </div>
+                  </div>
+            
+                  <div class="mb-3" style="width: 300px;margin-left: auto;margin-right: auto;">
+                    <label for="validationDefault01" class="form-label">Total Time for journey</label>
+                    <div class="input-group">
+                      <input type="number" class="form-control" id="txtEmail" name="ttimeTAke" readonly>
+                    </div>
+                  </div>
+            
+                  <div class="mb-3" style="width: 300px;margin-left: auto;margin-right: auto; ">
+                    <label for="validationDefault01" class="form-label">price</label>
+                    <div class="input-group">
+                      <input type="number" class="form-control" id="txtRole" name="price" readonly>
+                    </div>
+                  </div>
+            
+                  <div class="col" style="text-align: center;">
+
+                    <button type="button" class="btn btn-success" onclick="confirmBooking ()" style="width: 100px;height: 40px;font-weight: 600; font-size: 19px;" data-bs-dismiss="modal">Confirm</a></button>
+
+                  </div>
+            
+                </div>
+            
+            
+              </div>
+            
+            
+            </form>
         
             </div>
           </div>

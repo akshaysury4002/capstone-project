@@ -15,60 +15,53 @@ const readIdQueryParam = () => {
 
 console.log(readIdQueryParam())
 
-function apiGetBookingDetails(table) {
+function apiGetBookingDetails() {
     const bookingId = readIdQueryParam()
 
     axios.get(`http://localhost:8080/booking/getbookingbyid/${bookingId}`)
-            .then(res => {
-                   const { data } = res
-                   console.log(data)  
-                   const { sts, msg, bd } = data
-
-                 propulateActualData(table, bd)
-            })
-        .catch(err => console.log(err))
+    .then(httpReponse => httpReponse.data)
+    .then(data => populateForm(document.getElementById('viewMore'), data.bd))
+    .catch(err => console.log(err))
 
         
 }
 
 function setupTable() {
-    const table = document.getElementById('tableViewMoreetalis')
 
-     apiGetBookingDetails(table)
+     apiGetBookingDetails()
 }
 
-function propulateActualData(table, bd) {
 
-        const row = table.insertRow()
-        row.insertCell(0).innerHTML = bd.bookingId
-        row.insertCell(1).innerHTML = bd.bookingVname
-        row.insertCell(2).innerHTML = bd.bookingFrom
-        row.insertCell(3).innerHTML = bd.bookingDestination
-        row.insertCell(4).innerHTML = bd.date
-        row.insertCell(5).innerHTML = bd.time
-        row.insertCell(6).innerHTML = bd.typeVahi
-        row.insertCell(7).innerHTML = bd.ttimeTAke
-        row.insertCell(8).innerHTML = bd.price
-        row.insertCell(9).innerHTML = ` <a href='#' onclick='confirmBooking(${bd.bookingId})'>Confirm</a>` 
-    }
+
+function populateForm(form, data) {
+        console.log(data)
+        const { elements } = form; // it will give all input elements 
+        console.log(elements)
+    
+        const entries = Object.entries(data) // it will give all [keys, values] of invoice json which is received from server
+        console.log(entries)
+    
+        for (const entry of entries) {
+            // here entry is an array of 2 elements, oth is key, first is value
+            console.log(entry)
+            // const key = entry[0]
+            // const value = entry[1]
+    
+            const [key, value] = entry
+            const inputField = elements.namedItem(key)
+            console.log(inputField)
+            if (inputField) inputField.value = value
+        }
+
+    
+ }
+
 
 setupTable()
 
-function showConfirmDeleteModal(bookingId) {
-    console.log('clicked ' + bookingId)
-    const myModalEl = document.getElementById('deleteModal');
-    const modal = new bootstrap.Modal(myModalEl)
-    modal.show()
 
-    const btDl = document.getElementById('btDl')
-    btDl.onclick = () => {
-        apiCallDeleteBooking(bookingId, modal)
-        window.location.href = '../html-forms/Admin-home.html'
-        
-    }
-}
-
-function confirmBooking(bookingId) {
+function confirmBooking() {
+    const bookingId = readIdQueryParam()
     const userId = sessionStorage.getItem("userId");
 
     console.log(userId)
@@ -80,13 +73,13 @@ function confirmBooking(bookingId) {
     axios.post(`http://localhost:8080/user/${userId}/userbookings/${bookingId}`, { headers })
           
         .then(res => {
-            showSuccessModalEventBook()
+            showSuccessModalBook()
         }).catch(err => console.log(err))
 }
 
 
 
-function showSuccessModalEventBook() {
+function showSuccessModalBook() {
     const myModalEl = document.getElementById('successModalbooking');
     const modal = new bootstrap.Modal(myModalEl)
     modal.show()

@@ -54,8 +54,8 @@ function propulateActualData(table, bookings) {
             row.insertCell(3).innerHTML = bookingDestination
             row.insertCell(4).innerHTML = date
             row.insertCell(5).innerHTML = `
-            <a href='${viewPageUrl}'>View</a> 
-            <a class='ms-2' href='#' onclick='confirmBooking(${bookingId})'>Comfirm</a>`
+            <button type="button" class="btn btn-secondary" onclick="window.location='${viewPageUrl}';" data-bs-dismiss="modal">View More</a></button>
+            <button type="button" class="btn btn-secondary" onclick='confirmBooking(${bookingId})';" data-bs-dismiss="modal">Confirm</a></button>`
 
 
         }
