@@ -19,7 +19,7 @@ function apiGetBookingDetails() {
 
     axios.get(`http://localhost:8080/booking/getbookingbyid/${bookingId}`)
     .then(httpReponse => httpReponse.data)
-    .then(data => populateForm(document.getElementById('MyProfile'), data.bd))
+    .then(data => populateForm(document.getElementById('viewMore'), data.bd))
     .catch(err => console.log(err))
 
         
